@@ -1,0 +1,33 @@
+<mat-card>
+    
+      
+      
+
+    <div class="d-flex flex-row justify-content-between">
+      <mat-card-title class="mx-3 my-2">New Account</mat-card-title>
+      <i class="bi bi-file-excel-fill cross mt-2 mx-2" (click)="onClose()"></i>
+    </div>
+    
+        
+        <mat-card-content>
+          <!-- Add content for the card body here -->
+          <!--[formGroup]="newAccount" -->
+          <div class="d-flex flex-column">
+                
+             <!--   <mat-form-field appearance="outline">
+                    <mat-label>Account Id</mat-label>
+                    <input matInput formControlName="accountid">
+                </mat-form-field>-->
+                <div>
+                  <label for="account" class="label-style" >Account Name</label>
+                    <input class="input-style input-style:focus" id="account" type="text" [(ngModel)]="accountname" name="accountname" >
+                  </div>
+                <button class="btn btn-primary submit my-2" (click)="onSubmit()">Submit</button>
+                  
+                <p class="error">{{errorMsg}}</p>
+          </div>
+    
+        </mat-card-content>
+      
+       
+      </mat-card>

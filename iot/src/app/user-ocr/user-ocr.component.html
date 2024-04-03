@@ -1,0 +1,26 @@
+<div class="flexing">
+<h1 class="title">Upload Image </h1>
+<i class="fa-regular fa-circle-xmark cross" (click)="onClose()" ></i>
+
+</div>
+<hr>
+
+<div class="ocr-center">
+    <div class="d-flex flex-row justify-content-between  photo-details">
+      <div class="photo-upload ">
+        <div class="inner-image">
+          <img [src]="selectedImage" class="profile-pic">
+         
+ 
+<div class="image-buttons">
+<form (submit)="processImage($event)">                      
+<input type="file" #fileInput accept="image/*" (change)="handleFileSelect($event)"style="display: none;" >
+<button  class="btn btn-primary upload-button" (click)="fileInput.click()" >Upload</button>
+</form>   
+</div>
+         
+        </div>
+      </div>
+ 
+    </div>
+  </div>

@@ -1,0 +1,32 @@
+<mat-card class="mat-Element">
+
+    <mat-dialog-content class="container-width">
+
+        <div class="container-nav">
+
+            <p class="new-User">New User Accounts</p>
+
+        </div>
+
+        <div class="account ">
+            <div class="d-flex flex-column ">
+                <label for="account" class="label-style" >Account Name</label>
+                  <input class="input-style input-style:focus" [(ngModel)]="accountName" id="account" type="text" >
+                </div>
+        </div>
+       
+        <div class="form-wrapper" >
+
+            <div class="mobileForm">
+        <div class="button-container-user">
+
+            <button class="accept-button" (click)="onAccounts()">Next</button>
+
+
+
+        </div>
+        </div>
+        </div>
+</mat-dialog-content>
+
+</mat-card>

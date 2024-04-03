@@ -1,0 +1,30 @@
+.user-form{
+    height: 500px;
+    width:700px;
+    border-radius:20px;
+    background-color: transparent;
+    border-width: 1px;
+    border-style: solid;
+    margin-top: 80px;
+    margin-left: 100px;
+    border-color: #a0a0a0;
+    margin-right:200px;
+  }
+  
+  .top-bar{
+    background-color:  #AFDAFA;
+    
+    height: 63px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 15px;
+   
+  }
+
+  .heading-create{
+    font-weight: bold;
+    font-size: 28px;
+    margin-left: 20px;
+  
+  }
+  

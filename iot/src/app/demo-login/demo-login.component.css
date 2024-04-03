@@ -1,0 +1,115 @@
+.margin-top{
+    border-style: solid;
+    border-width: 5px;
+    border-color: #49c5b6;
+}
+
+
+.left-side-container{
+    width: 400px;
+    background-color: #191f28;
+    height: 100%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.heading{
+    color:#fff;
+    margin-left: 400px;
+}
+
+.main-container{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    margin-left: 250px;
+}
+
+.card-container{
+    background: #fff;
+    transition: .5s;
+    border: 0;
+    border-radius: .55rem;
+    margin-bottom: 30px;
+    width: 397px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    padding-left: 10px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+}
+
+.card-header{
+    color: #444;
+    margin-left: 20px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.label-name{
+    font-weight: 600;
+}
+
+.form-group{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.input-style{
+    width: 320px;
+    height: 35px;
+}
+
+.check{
+    height: 20px;
+    width: 20px;
+}
+
+.check-style{
+    font-family: "Ubuntu",sans-serif;
+    font-size: 14px;
+    color: #5A5A5A;
+    margin-left: 10px;
+
+}
+.checkbox-margin{
+    margin-left: 20px;
+    margin-top: 25px;
+}
+
+.login-button{
+    font-size: 14px;
+    width: 320px;
+    padding: .5rem 1rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    background-color: #49c5b6;
+    border-color: #49c5b6;
+    border-width: 0px;
+    color: white;
+    margin-left:20px;
+    margin-top:20px;
+    height: 39px;
+}
+
+.lock{
+    font-size: 13px;
+    color: #9A9A9A;
+
+}
+
+.forgot{
+    text-decoration: none;
+    font-family: "Ubuntu",sans-serif;
+    font-size: 14px;
+}
+
+.bottom{
+    margin-top: 20px;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+}

@@ -1,0 +1,204 @@
+<body class="main-container">
+  <mat-toolbar class="mb-0 d-flex flex-row justify-content-between" >
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <div class="d-flex flex-row">
+      <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 50px; height: 50px;">
+      <h1 class="mb-0 mt-2">Bariflo Labs</h1>
+    </div>
+    </div>
+      <div class="d-flex flex-row">
+        <button mat-button [matMenuTriggerFor]="menu"><div class="name-icon">BN</div></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+        
+        <button mat-button [matMenuTriggerFor]="menu"><h1 class="username">Biswajit Nayak</h1></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item (click)="onLogout1()">Logout</button>
+        </mat-menu>
+      </div>
+  </mat-toolbar>
+
+     <mat-sidenav-container>
+        <mat-sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>  
+                <!-- Menu item with a sub-menu -->
+                <mat-list-item>
+                  <a mat-list-item href="dashboard"><i class="bi bi-house-fill icon-size"></i> Accounts</a>
+                </mat-list-item>
+                <hr class="my-0">
+                <mat-list-item>
+                  <a mat-list-item href="newdevices"><i class="bi bi-plus-square-fill"></i> New Devices</a>
+                </mat-list-item>
+                <hr class="my-0">
+                <mat-list-item>
+                  <a mat-list-item href="users"><i class="bi bi-people-fill"></i> Users</a>
+                </mat-list-item>
+                <hr class="my-0">
+                <mat-list-item class="mx-3" (click)="toggleSubMenu('submenu2')">
+                  <span><i class="bi bi-gear-fill"></i> Settings</span>
+                  
+                </mat-list-item>
+                <mat-list-item *ngIf="isSubMenuOpen('submenu2')">
+                  <a mat-list-item href="settings">Device Types</a>
+                 
+                </mat-list-item>
+              </mat-nav-list>
+
+        </mat-sidenav>
+        <div class="row mt-5 pt-5 mx-3">
+        <div class="col">
+            <mat-card>   
+                <mat-card-header>
+                  Assigned Controls
+                </mat-card-header>
+                <hr>
+                <mat-card-content>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped table-hover">
+                           <thead>
+                              <tr>
+                                <th>Control Name</th>
+                              
+                                <th>Actions</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>
+                                    Slider Input
+                                     
+                                   </td>
+                                  
+                                   <td>
+                                     <button class="btn btn-success mx-1"(click)="openDialog()"> Edit</button>
+                                     <button class="btn btn-danger mx-1"><i class="bi bi-trash"></i></button>
+                                     
+                                   </td>
+                                   
+                               </tr>
+                               <tr>
+                                <td>
+                                 Line Graph
+                                  
+                                </td>
+                               
+                                <td>
+                                  <button class="btn btn-success mx-1"(click)="openDialog1()"> Edit</button>
+                                  <button class="btn btn-danger mx-1"><i class="bi bi-trash"></i></button>
+                                  
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                              <td>
+                               Label
+                                
+                              </td>
+                             
+                              <td>
+                                <button class="btn btn-success mx-1"(click)="openDialog2()"> Edit</button>
+                                <button class="btn btn-danger mx-1"><i class="bi bi-trash"></i></button>
+                                
+                              </td>
+                              
+                          </tr>
+                          <tr>
+                            <td>
+                             On Off button
+                              
+                            </td>
+                           
+                            <td>
+                              <button class="btn btn-success mx-1"(click)="openDialog3()"> Edit</button>
+                              <button class="btn btn-danger mx-1"><i class="bi bi-trash"></i></button>
+                              
+                            </td>
+                            
+                        </tr>
+                           </tbody>
+    
+                        </table>
+                    </div>
+                 
+                 <hr>
+                 <button mat-raised-button color="primary">save config</button>   
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+         <div class="col">
+            <mat-card>   
+                <mat-card-header>
+                  Available Controls
+                </mat-card-header>
+                <hr>
+                <mat-card-content>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-bordered table-striped table-hover">
+                           <thead>
+                              <tr>
+                                <th>Control Name</th>
+                              
+                                <th>Actions</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>On Off Button</td>
+                                  
+                                   <td>
+                                     <button class="btn btn-success mx-1"(click)="openDialog()"> ADD</button>
+                                   </td>
+                                   
+                               </tr>
+                               <tr>
+                                <td>Slider Input</td>
+                               
+                                <td>
+                                  <button class="btn btn-success mx-1"(click)="openDialog()"> ADD</button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Line Graph</td>
+                               
+                                <td>
+                                  <button class="btn btn-success mx-1"(click)="openDialog()"> ADD</button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>Label</td>
+                               
+                                <td>
+                                  <button class="btn btn-success mx-1"(click)="openDialog()"> ADD</button>
+                                </td>
+                                
+                            </tr>
+                           </tbody>
+    
+                        </table>
+                      </div>
+                </mat-card-content>
+            </mat-card>
+         </div>
+        </div>
+     </mat-sidenav-container>  
+     <nav class="navbar fixed-bottom footer">
+      <div class="container-fluid">
+        <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+      </div>
+    </nav>
+     
+</body>
+
+
+

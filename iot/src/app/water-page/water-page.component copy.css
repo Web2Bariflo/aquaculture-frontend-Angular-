@@ -1,0 +1,703 @@
+.container-bg{
+  display:flex;
+  flex-direction: column;
+ 
+ 
+}
+.navbar{
+  z-index: 99;
+  
+}
+.collapse{
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 999;
+}
+
+.sidebar {
+    margin: auto;
+    /* padding: 0; */
+    width: 68px;
+    background-color: #02226C;
+    position: fixed;
+    height: 100vh;
+    /* overflow: auto; */
+    overflow: visible;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    z-index: 2;
+ 
+  }
+ 
+.name-profile-container{
+  width: 100%;
+  display:flex;
+  margin: 8px auto;
+  /* margin-left:10px; */
+  background: #fff;
+  height: 43px;
+  width: 43px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 124px;
+}
+.name-profile-container img{
+  width: 31px;
+  height: 32px;
+}
+ 
+  .sidebar a {
+   
+    padding: 16px;
+    text-decoration: none;
+    text-align: center;
+  }
+ 
+ 
+  .name-anchor{
+    color:#5F038B;
+    font-size:20px;
+    font-weight:600;
+  }
+ 
+  /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+  }
+ 
+  /* On screens that are less than 700px wide, make the sidebar into a topbar */
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+ 
+  /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+ 
+  .logo-size{
+    width: 40px;
+    height: 42px;
+  }
+ 
+ 
+.nav-bar{
+  width:100vw;
+  height: 50px;
+  background-color: #ffffff;
+  position: fixed;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1;
+}
+ 
+.sidebar-content-container{
+  display:flex;
+  position: relative;
+  overflow: visible;
+
+ 
+}
+.list-items-nav{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  width:300px;
+  margin-right:40px;
+ 
+}
+.list-items-nav li a{
+  display: flex;
+  align-items: center;
+}
+ 
+.eachlist{
+  list-style-type: none;
+  margin-top:3px;
+}
+.eachlist a{
+  cursor: pointer;
+
+}
+/* .account-details{
+  position: absolute;
+  right: -80%;
+  z-index: 9;
+} */
+.account-full{
+  width: max-content !important;
+  box-shadow: 0px 0px 8px 0px #000;
+  border-radius: 5px;
+  padding: 10px 25px !important;
+  margin-left: 10px !important;
+  background: linear-gradient(to bottom, rgba(201, 232, 255, 1), rgba(201, 232, 255, 0.4));
+}
+.active-item{
+  /* background-color: #04AA6D; */
+  color: white;
+  /* width:200px; */
+  /* margin-top: 124px; */
+
+}
+ 
+.each-main-item{
+  display:flex;
+  justify-content: center;
+  /* padding: 0px 10px; */
+  height: 50px;
+  width: 50px;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+}
+.each-main-item:hover{
+  background: #ecf5fba8;
+  border-radius: 5px;
+}
+.each-main-item i{
+  width: 30px;
+  height: 30px;
+  color: #fff;
+ padding: 10px 5px;
+  margin: auto;
+  /* border-radius: 3px; */
+}
+.each-main-item img:hover{
+  background: #e0dfdf85;
+}
+.each-main-item img{
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+  border-radius: 3px;
+
+}
+/* ========================= graph toggle icon ====================================== */
+.wrapper {
+  width: max-content;
+  background-color: #E8E9E8;
+  border-radius: 12px;
+  padding: 3px;
+  box-shadow: 69px 191px 81px rgba(0, 0, 0, 0.01), 39px 107px 69px rgba(0, 0, 0, 0.04), 17px 48px 51px rgba(0, 0, 0, 0.07), 4px 12px 28px rgba(0, 0, 0, 0.08), inset 0px 0px 1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.graph-content {
+  /* width: 100%;
+  height: 100%; */
+  background: rgba(250, 250, 250, 0.9);
+  box-shadow: 0px 7px 4px rgba(11, 3, 45, 0.01), 0px 3px 3px rgba(11, 3, 45, 0.02), 0px 1px 2px rgba(11, 3, 45, 0.03);
+  border-radius: 9px;
+}
+
+.item {
+  height: 0px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.item::before { /* left gradient line */
+  content: '';
+  height: 60px;
+  width: 1px;
+  position: absolute;
+  left: -1px;
+  background: linear-gradient(hsla(358, 100%, 68%, 0%), hsla(358, 100%, 68%, 40%), hsla(358, 100%, 68%, 0%));
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: hsla(40, 7%, 8%, 5%);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  margin-right: 16px;
+  transition: .2s;
+}
+
+.icon-wrapper::after { /* gradient border */
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: inherit;
+  border-radius: inherit;
+  background: linear-gradient(hsla(358, 100%, 68%, 50%), hsla(358, 100%, 68%, 66%)) border-box;
+  mask: linear-gradient(black, black) padding-box, linear-gradient(black, black);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #171614;
+  flex-grow: 1;
+  
+  background: linear-gradient(to right, #9F524F, #171614 40px);
+  color: transparent;
+  background-clip: text;
+  background-position: -40px 0;
+  transition: background-position .2s;
+}
+
+.graph-switch {
+  width: 34px;
+  height: 20px;
+  background: #D2D2D0;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.94), inset 0px 1px 2px rgba(23, 22, 20, 0.13);
+  border-radius: 50em;
+  margin-left: auto;
+  padding: 4px;
+  transition: .2s;
+}
+
+.switch-marker {
+  height: 12px;
+  width: 12px;
+  background: #F3F3F3;
+  box-shadow: 0px 6px 2px rgba(0, 0, 0, 0.02), 0px 3px 2px rgba(0, 0, 0, 0.06), 0px 2px 2px rgba(0, 0, 0, 0.09), 0px 0px 1px rgba(0, 0, 0, 0.11), inset 0px 1px 0px #FFFFFF;
+  border-radius: 50%;
+  transition: transform .2s;
+}
+
+.graph-switch:has(input:checked) {
+  background: #FF5A5F;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.2), inset 0px 1px 2px rgba(23, 22, 20, 0.28);
+}
+
+.graph-switch:has(input:checked) .switch-marker {
+  transform: translateX(14px);
+}
+
+.divider {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  background-color: hsla(40, 7%, 8%, 6%);
+  height: 1px;
+  width: calc(100% - 40px);
+}
+
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  height: 1px;
+  left: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.item:has(input:checked)::before {
+  opacity: 1;
+}
+
+.item:has(input:checked) .icon-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 2px 4px rgba(255, 90, 95, 0.3), 0px 0px 0px 2px rgba(255, 90, 95, 0.13), inset 0px -2.5px 0px rgba(255, 90, 95, 0.25);
+}
+
+.item:has(input:checked) .icon-wrapper::after { /* make border gradient visible */
+  opacity: 1;
+}
+
+.item:has(input:checked) p {
+  background-position: 0 0;
+}
+/* ========================= graph toggle icon ====================================== */
+
+
+ 
+/* .each-list:hover{
+  background-color: rgb(214, 210, 210);
+ 
+} */
+ 
+.active{
+  font-weight:bold;
+  font-family: "Robotic";
+  color: black;
+ 
+}
+
+
+ 
+.bg-container-content{
+  display:flex;
+}
+ 
+ 
+ 
+.bg-content-dashboard{
+  display:flex;
+  margin-left:100px;
+  margin-top:90px;
+  padding:10px;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 10px;
+  /* z-index: -1; */
+ 
+}
+ 
+ 
+.card-weather-live{
+  box-shadow: 0px 4px 4px 0px #00000040;
+  background-color: white;
+  margin-left:20px;
+  margin-top: 90px;;
+ 
+  width:350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;;
+ 
+}
+ 
+.name-heading{
+  font-size:16px;
+}
+ 
+.bg-icon-image{
+   background-color:#02226C;
+   height: 70px;
+   width: 70px;
+   border-radius: 35px;;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   margin:5px;
+ 
+ 
+}
+.bg-maps{
+  z-index: -1;
+}
+/* .id-drop-down{
+ z-index: 999;
+}  */
+ 
+.heading-live-weather{
+  color:#106FEF;
+  font-size:24px;
+}
+ 
+ 
+.image-icon{
+  height:50px;
+}
+ 
+.each-item-weather{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  width:250px;
+}
+.account-button{
+  width: 100%;
+  margin: auto;
+}
+.account-button svg{
+  width: 100%;
+
+}
+ 
+.account-details{
+  width: 100%;
+  font-weight:500;
+  color: #fff;
+  margin: auto;
+  padding: 10px;
+}
+ 
+.details-names{
+   color:#5F038B;
+ 
+  }
+ 
+ 
+  .diagnosis-details{
+    /* margin-left:15px; */
+    padding:2px 4px;
+    font-weight:500;
+  }
+ 
+  .ocr-description{
+    background-color:#f5e3fe;
+    padding:5px;
+    color:#5B0186;
+    padding-top:2px;
+    display:flex;
+    justify-content: space-between;
+    box-shadow: 0px 4px 4px 0px #00000040;
+   
+ 
+  }
+ 
+  .description-shrimp{
+    background-color:#FFF5D2;
+    padding:5px;
+    /* margin-left:15px; */
+  }
+ 
+  .description-water{
+    background-color:#F5F5F5;
+    padding:5px;
+    color:#02226C;
+    /* margin-left:15px; */
+ 
+  }
+ 
+  .dropup-element{
+    margin-left:10px;
+ 
+  }
+ 
+  .dropup-ocr-element{
+    margin-left:150px;
+  }
+ 
+ 
+.description-consulting{
+  background-color:#EDD1FB;
+  padding:5px;
+      color:#5B0186;
+     box-shadow: 0px 4px 4px 0px #00000040;
+ 
+ 
+}
+ 
+.description-Medicine{
+  background-color:#f5e3fe;
+  padding:5px;
+  color:#5B0186;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.content-box{
+  display: flex;
+  flex-direction: column;
+}
+.chart-container{
+  width:88%;
+  margin-left: 165px;
+  margin-top: 20px;
+}
+
+.image-suffix{
+  width: 10px;
+  height: 10px;
+}
+
+.logout{
+  font-size: 23px;
+  color: rgb(6, 6, 73);
+  margin-top: 2px;
+}
+.no-button{
+  background-color: transparent;
+  border-width: 0px;
+}
+.inner{
+  margin-left: 0px;
+  /* background-color: rgb(243, 191, 243); */
+}
+
+.account-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.color{
+  color: black;
+}
+
+
+.device-flex{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+
+.name-styles{
+  font-size: 15px;
+}
+
+
+.custom-dropdown-menu {
+  width: 250px; /* Adjust the width as needed */
+} 
+
+.title{
+  font-weight: bold;
+  font-size: 17px;
+}
+
+
+/* toggle.component.css */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgb(233, 71, 71);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(40, 153, 40);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.controls{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* box.component.css */
+
+.box {
+  width: 150px;
+  height: 150px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+
+
+
+/* slider.component.css */
+.blue-slider {
+  /* Customize the appearance of the slider track and thumb */
+  width: 100%;
+  height: 10px;
+  background-color: rgb(60, 214, 60); /* Blue color */
+  border: none;
+  border-radius: 5px;
+  outline: none;
+
+  /* Customize the appearance of the slider thumb */
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.blue-slider::-webkit-slider-thumb {
+  /* Customize the appearance of the slider thumb in Webkit browsers */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(250, 85, 85);
+  border: 2px solid #2196F3; /* Blue color */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.card-inner{
+  margin: 30px;
+  background-color: #F5F5F5;
+  padding: 10px;
+
+}
+
+
+@media screen and (max-width:768px){
+  .controls{
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .display-name{
+    font-size: 12px;
+  }
+ 
+}
+
+.footer-end{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer{
+  margin-right: 15px;
+}

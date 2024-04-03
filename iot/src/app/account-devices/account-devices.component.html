@@ -1,0 +1,123 @@
+<body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between " >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+        <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 50px; height: 50px;">
+        <h1 class="mb-0 mt-2">Bariflo Labs</h1>
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button class="name-icon mx-3" [matMenuTriggerFor]="menu">BN</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+          
+          <button class="username" [matMenuTriggerFor]="menu">Biswajit Nayak</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout1()">Logout</button>
+          </mat-menu>
+        </div>
+    </mat-toolbar>
+   
+       <mat-sidenav-container>
+           <mat-sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>  
+              <!-- Menu item with a sub-menu -->
+              <mat-list-item>
+                <a mat-list-item href="dashboard"><i class="bi bi-house-fill icon-size"></i> Accounts</a>
+              </mat-list-item>
+              <hr class="my-0">
+              <mat-list-item>
+                <a mat-list-item href="newdevices"><i class="bi bi-plus-square-fill"></i> New Devices</a>
+              </mat-list-item>
+              <hr class="my-0">
+              <mat-list-item>
+                <a mat-list-item href="users"><i class="bi bi-people-fill"></i> Users</a>
+              </mat-list-item>
+              <hr class="my-0">
+              <mat-list-item class="mx-3" (click)="toggleSubMenu('submenu1')">
+                <span><i class="bi bi-gear-fill"></i> Settings</span>
+                
+              </mat-list-item>
+              <mat-list-item *ngIf="isSubMenuOpen('submenu1')">
+                <a mat-list-item href="settings">Device Types</a>
+               
+              </mat-list-item>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div>
+              <mat-card class="card-width">   
+                <mat-card-header class="device-heading">
+                  New Device
+                </mat-card-header>
+                <hr >
+                <p class="name-label mx-3">Serial Number</p>
+                <input type="text" class="custom-input custom-input:focus mx-3 p-2" placeholder="Serial Number" >
+                <p class="name-label mx-3 my-3">Device Name</p>
+                <input type="text" class="custom-input custom-input:focus mx-3 p-2" placeholder="Device Name" >
+                <p class="name-label mx-3 my-3">Device Type</p>
+                <select class="custom-input custom-input:focus mx-3 p-2 drop-width">
+                    <option value="" selected disabled>
+                        Select Device Type
+                    </option>
+                    <option value="Areation 1">Areation 1</option>
+                    <option value="controls 2">controls 2</option>
+                    <option value="Areation 3">Areation 3</option>
+                    <option value="Sensor M 1 1">Sensor M 1 1</option>
+                    <option value="Mobility 1">Mobility 1</option>
+                    <option value="Areation Test 4">Areation Test 4</option>
+                    <option value="Test device1 1">Test device1 1</option>
+                    <option value="xyz 1">xyz 1</option>
+                    <option value="water Temp 1">water Temp 1</option>
+                    <option value="areation_test 0.1">areation_test 0.1</option>
+                    <option value="areration device 1.3">areration device 1.3</option>
+                    <option value="PH sensor 1">PH sensor 1</option>
+                    <option value="Testdevice-01 1">Testdevice-01 1</option>
+                    <option value="KishoreTest-3 1.0">KishoreTest-3 1.0</option>
+                    <option value="ShibashiTest 1.0">ShibashiTest 1.0</option>
+                    <option value="Aeration 2">Aeration 2</option>
+                    <option value="Test Shibasish 1.0">Test Shibasish 1.0</option>
+                    <option value="Do Sensor1">Do Sensor1</option>
+                    <option value="abc a">abc a</option>
+                    <option value="Single Aeration 3">Single Aeration 3</option>
+                    <option value="LED BulbPS 1">LED BulbPS 1</option>
+                    <option value="LED BulbPS 2">LED BulbPS 2</option>
+                    <option value="demo 1">demo 1</option>
+                    <option value="2in1_Aeration 3">2in1_Aeration 3</option>
+                    <option value="Single Aeration 2.1">Single Aeration 2.1</option>
+                    <option value="2in1 Aeration 2.1 ">2in1 Aeration 2.1</option>
+                    <option value="JSW 2 in 1(1) 2.1">JSW 2 in 1(1) 2.1</option>
+                    <option value="JSW 2 in 1(1) 2.1">JSW 2 in 1(1) 2.1</option>
+                    <option value="JSW Single 2.1 ">JSW Single 2.1</option>
+                    <option value="Sensor 1">Sensor 1</option>
+                    <option value="Monitoring_sensor 1">Monitoring_sensor 1</option>
+                    <option value="Lora Data 1">Lora Data 1</option>
+                </select>
+                <div class="d-flex flex-row">
+                <button class="btn save-button mx-3 my-3">SUBMIT</button>
+                <button class="btn save-button color-change mx-4 my-3" (click)="OnAction()" >CANCEL</button>
+                </div>
+                </mat-card>
+            </div>
+          </mat-sidenav-content>
+
+    </mat-sidenav-container>
+     
+    
+    <nav class="navbar fixed-bottom footer">
+        <div class="container-fluid">
+          <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+        </div>
+      </nav>
+         
+     
+    
+   </body>

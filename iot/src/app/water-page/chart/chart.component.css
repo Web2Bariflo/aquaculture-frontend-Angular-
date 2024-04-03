@@ -1,0 +1,41 @@
+.container{
+    margin-bottom: 20x;
+}
+.chart-card{
+    margin-left: 2%;
+    margin-right: 0%;
+}
+/* chart download designe */
+.download-Chart{
+    position: relative;
+  }
+  
+  .chart-download-dropdown{
+    position: absolute;
+    /* display: flex; */
+    flex-direction: column;
+    gap: 9px;
+    color: #0b46e6;
+    background: linear-gradient(to bottom, rgba(201, 232, 255, 1), rgba(201, 232, 255, 0.4));
+    box-shadow: 0px 0px 1px 2px #ccc;
+    padding: 8px;
+    text-align: center;
+    border-radius: 3px;
+    display: none;
+    font-weight: bold;
+  }
+  .download-Chart ul li{
+    cursor: pointer;
+  }
+  .show-chart-download{
+    display: flex;
+  }
+
+
+
+@media only screen and (max-width: 990px) {
+    .chart-card{
+        margin-left: 2%;
+        margin-right: 0%;
+    }
+}

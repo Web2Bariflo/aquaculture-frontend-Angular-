@@ -1,0 +1,47 @@
+.label-style{
+    color: #8f9bb3;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.input-style{
+    border-radius: 3px;
+    border-width: 0px;
+    border-style: solid;
+    background-color: rgb(241, 251, 255) ;
+    transition: border-color 0.3s;
+    width: 300px;
+    padding: 10px;
+}
+
+.input-style:focus{
+    outline: none;
+    border-color: rgba(40, 150, 218, 0.989);
+    border-width: 1px;
+}
+
+
+.submit{
+    border-radius: 4px;
+    padding: 5px;
+    height: 40px;
+    width: 90px;
+}
+
+.error{
+    color: red;
+    font-size: 15px;
+}
+.cross{
+    color: red;
+    font-size: 30px;
+    
+}
+
+@media only screen and (max-width: 768px){
+.input-style{
+    max-width: 200px ;
+}
+
+
+}

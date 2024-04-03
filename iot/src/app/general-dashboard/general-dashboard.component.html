@@ -1,0 +1,170 @@
+<body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between fixed-top" >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center bar-div" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+       <!-- <h1 class="mb-0 mt-2 top-heading">Bariflo Labs</h1> -->
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}
+  
+          </button>
+          <mat-menu #menu="matMenu">
+     
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+  
+        </div>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="nav-space">
+        <mat-sidenav mode="side" class="side-bar" [(opened)]="opened">
+            <mat-nav-list class="top-space">
+
+              <div class="lg-side">
+            
+              <mat-list-item class="mt-3 selected-tab">
+                <a mat-list-item href="general-dashboard">
+                  <img src="./assets/img/grid.png" class="icon-sizing">
+                  <span class="icon-text">Dashboard</span>
+                </a>
+              </mat-list-item>
+          
+              <mat-list-item class="mt-3 ">
+                <a mat-list-item href="ocr-code">
+                  <!-- <img src="./assets/img/Vector.png" class="icon-sizing"> -->
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <span class="icon-text">OCR</span>
+                </a>
+              </mat-list-item>
+          
+              <mat-list-item class="mt-3 ">
+                <a mat-list-item href="profile-page">
+                  <img src="./assets/img/person.png" class="icon-sizing">
+                  <span class="icon-text">User Profile</span>
+                </a>
+              </mat-list-item>
+              </div>
+              <div class="sm-side">
+            
+                <div class="mt-3 selected-tab">
+                  <a href="general-dashboard">
+                    <img src="./assets/img/grid.png" class="icon-sizing">
+        
+                  </a>
+                </div>
+            
+            
+            
+                <div class="mt-3 ">
+                  <a href="profile-page">
+                    <img src="./assets/img/person.png" class="icon-sizing">
+               
+                  </a>
+                </div>
+                </div>
+            </mat-nav-list>
+          </mat-sidenav>
+          <div class="container-under-water">
+
+ 
+
+            <div class="container-under">
+            
+            <div class="image-devicedashboard">
+            
+                <img src="assets/img/monitoring.png" alt="Bariflo" class='device-image'/>
+            
+            </div>
+            
+            <div class="container-body">
+            
+                <p class="waterbody">Under Aquabody Management</p>
+            
+            <hr class="horzontal-line"/>
+            
+            </div>
+            
+            </div>
+            
+             
+            
+            </div>
+
+            <div>
+      
+                <h1 class="card-heading">
+                  Accounts
+                </h1>
+  
+                <div class=" table-margin">
+                  <div class="table-responsive text-nowrap  table-design">
+                      <table class="table table-bordered table-striped table-hover">
+                         <thead>
+                            <tr>
+                              <th class="table-head">Sl.No</th>
+                              <th class="table-head">Account ID</th>
+                              <th class="table-head">Account Name</th>
+                              <th class="table-head">Actions</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                             <!-- <tr *ngFor="let account of getCurrentPageData(); let i =index" >
+                                <td  class="name-style">{{i+1}}</td>
+                                 <td  class="name-style">{{account[1]}}</td>
+                                 <td  class="name-style">
+                                  {{account[0]}}
+                                 </td>
+                                 <td>
+                                   <button (click)="openDialog1(account)" class="btn btn-warning mx-1 all-button">Edit</button>
+                                   <button (click)="onDeleteAccount(account[1])" class="btn btn-danger mx-1 all-button">Delete</button>
+                                   <button (click)="onClick(account[1])" class="btn btn-primary mx-1 all-button">Devices</button>
+                                 </td>
+                                 
+                             </tr> -->
+                             <ng-container *ngIf="getCurrentPageData() && getCurrentPageData().length > 0; else noDataMessage">
+                              <tr *ngFor="let account of getCurrentPageData(); let i = index">
+                                  <td class="name-style">{{i + 1}}</td>
+                                  <td class="name-style">{{account[1]}}</td>
+                                  <td class="name-style">{{account[0]}}</td>
+                                  <td class="text-center">
+                                      <button (click)="onClick(account[1])" class="btn btn-primary mx-1 all-button">Devices</button>
+                                  </td>
+                              </tr>
+                          </ng-container>
+                          
+                          <ng-template #noDataMessage>
+                              <tr>
+                                  <td class="center-text" colspan="4">No Accounts are available! Add one</td>
+                              </tr>
+                          </ng-template>
+                          
+                         </tbody>
+  
+                      </table>
+                </div>
+                </div>
+  
+                <div class="d-flex flex-row justify-content-end mx-3">
+                  <button class="btn btn-primary custom-button  mt-1 mx-2 prev" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+                  <span class="my-2 page-note">Page {{ currentPage }} of {{ totalPages }}</span>
+                  <button class="btn btn-success custom-button mt-1 mx-2" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+                </div>
+            </div>
+             
+         </mat-sidenav-container>
+      
+       
+         <nav class="navbar fixed-bottom footer">
+          <div class="container-fluid d-flex flex-row justify-content-end">
+           
+            <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 35px; height: 40px;">
+          </div>
+        </nav>
+     </body>
+  

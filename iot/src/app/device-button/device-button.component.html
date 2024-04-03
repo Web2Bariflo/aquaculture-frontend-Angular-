@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>On Off Button</h2>
+<hr/>
+<mat-dialog-content>
+          <table class="table table-bordered table-striped table-hover">
+             <tbody>
+                <tr>
+                    <td class="display-name">
+                     Display Name
+                      
+                    </td>
+                   
+                    <td>
+                     <input type="text" [(ngModel)]="btn_dis_name" class="p-2 color color:focus" value="On Off Button" >
+                      
+                    </td>
+                 <tr>
+                     <td class="display-name">
+                      Virtual Pin 
+                     </td>
+                    
+                     <td>
+                      <input class="p-2 back-color1" [(ngModel)]="btn_pin" placeholder="Virtual Pin" >
+                       
+                     </td>
+                 </tr>
+                 
+              
+            
+          
+        <tr class="row-height">
+          <td colspan="2">
+           <input type="checkbox" [(ngModel)]="alw_usr" class="checkbox-height" id="allowuser">    
+           <label class="mx-2 allow" for ="allowuser">Allow User Access</label>        
+          </td>
+          
+      </tr>
+      <!-- <tr>
+        <td colspan="2">
+         <button class="btn custom-button">ADD</button>
+        </td>        
+    </tr> -->
+
+        </tbody>
+
+          </table>
+    <button type="submit" (click)="onOnOff()" class="btn custom-button disable">Submit</button>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+ <!-- <button mat-button mat-dialog-close>Close</button>-->
+  <!-- You can also add additional buttons here --></mat-dialog-actions>

@@ -1,0 +1,620 @@
+<div class="water-section change">
+
+  <nav class="navbar top-navbar change">
+    <div class="navbar-menu-icon">
+      <i class="fa-solid fa-bars" (click)="showTopNav($event)"></i>
+    </div>
+    <ul class='navbar-menu change'>
+      <li class="nav-item dropdown eachlist change">
+        <a class="dropdown-toggle change" id="navbarDropdowns" href="" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+          <!-- <i class="fa-solid fa-chart-line fs-3 change" style="color: #516799;"></i> -->
+          <i class="fa-solid fa-chart-line fs-3 change"></i>
+        </a>
+        <ul class="dropdown-menu custom-dropdown-menu sensorSwitch" aria-labelledby="navbarDropdowns" (click)="showSwitch($event)">
+          <li>
+            <!-- graph toggle button -->
+            <div class="graph-content">
+              <ul>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-1">Current</label>
+
+                    <label class="graph-switch" for="switch-checkbox-1">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-1" value="current" data-checkbox="0"
+                        (change)="getGraphSwitch($event, 'current')" [checked]="graphHeadings.includes('current')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-2">Voltage</label>
+
+                    <label class="graph-switch" for="switch-checkbox-2">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-2" data-checkbox="1" value="voltage"
+                        (change)="getGraphSwitch($event, 'voltage')" [checked]="graphHeadings.includes('voltage')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-3">PH</label>
+
+                    <label class="graph-switch" for="switch-checkbox-3">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-3" data-checkbox="2" value="ph"
+                        (change)="getGraphSwitch($event, 'ph')" [checked]="graphHeadings.includes('ph')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-4">ORP</label>
+
+                    <label class="graph-switch" for="switch-checkbox-4">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-4" data-checkbox="3" value="orp"
+                        (change)="getGraphSwitch($event, 'orp')" [checked]="graphHeadings.includes('orp')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-5">DO</label>
+
+                    <label class="graph-switch" for="switch-checkbox-5">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-5" data-checkbox="4" value="do"
+                        (change)="getGraphSwitch($event, 'do')" [checked]="graphHeadings.includes('do')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-6">TDS</label>
+
+                    <label class="graph-switch" for="switch-checkbox-6">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-6" data-checkbox="5" value="tds"
+                        (change)="getGraphSwitch($event, 'tds')" [checked]="graphHeadings.includes('tds')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-7">ABC</label>
+
+                    <label class="graph-switch" for="switch-checkbox-7">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-7" data-checkbox="6" value="abc"
+                        (change)="getGraphSwitch($event, 'abc')" [checked]="graphHeadings.includes('abc')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-8">DEF</label>
+
+                    <label class="graph-switch" for="switch-checkbox-8">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-8" data-checkbox="7" value="def"
+                        (change)="getGraphSwitch($event, 'def')" [checked]="graphHeadings.includes('def')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+              </ul>
+            </div>
+            <!-- graph toggle button -->
+          </li>
+        </ul>
+      </li>
+
+      <li class='nav-item dropdown change' (click)="onDevices()">
+        <a class='nav-link dropdown-toggle change' href='' id='navbarDropdown' role='button' data-bs-toggle='dropdown'
+          aria-expanded='false'>
+          <!-- <i class="bi bi-diagram-3-fill change" style="color: #516799;"></i> -->
+          <i class="bi bi-diagram-3-fill change"></i>
+        </a>
+        <ul class='dropdown-menu custom-dropdown-menu' aria-labelledby='navbarDropdown'
+          (click)='onDropdownClick($event)'>
+          <li *ngFor='let device of devicesNamesList'>
+            <div class='device-flex'>
+              <div class='name-styles'>
+                <p><span class='title'>ID: </span>{{device[1]}}</p>
+                <p><span class='title'>Dev_Name: </span>{{device[0]}}</p>
+              </div>
+              <div>
+                <p>
+                  <label class='switch'>
+                    <input type='checkbox' [checked]='devicesStatus[device[1]]'
+                      (change)='onToggleChange($event, device)'>
+                    <span class='slider round'></span>
+                  </label>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li class='nav-item change' (click)="toggleTheme()">
+        <!-- <img src='./assets/img/nightlight.png' /> -->
+        <i class="bi bi-brightness-high-fill change"></i>
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Calendar'> -->
+        <!-- <img src='./assets/img/Calendar.png' /> -->
+        <i class="bi bi-calendar-week change" title='Calendar' (click)="openCalenderModel()"></i>
+        <!-- </button> -->
+
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Notifications'> -->
+        <!-- <img src='./assets/img/notification.png' /> -->
+        <i class="bi bi-bell-fill change"></i>
+        <!-- </button> -->
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Help'> -->
+        <!-- <img src='./assets/img/help-circle.png' /> -->
+        <i class="bi bi-question-circle change" title="Get Help"></i>
+        <!-- </button> -->
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Logout' (click)='onLogout()'> -->
+        <i class='fa-solid fa-arrow-right-from-bracket logout change' (click)='onLogout()'></i>
+        <!-- </button> -->
+      </li>
+
+    </ul>
+  </nav>
+  <!-- top side Navbar -->
+  <nav class="navbar top-side-navbar">
+    <div class="navbar-menu-icon">
+      <i class="fa-solid fa-bars" (click)="showTopNav($event)"></i>
+    </div>
+    <ul class='navbar-menu change top-navbar-menu'>
+      <li class="nav-item dropdown dropstart eachlist change">
+        <a class="dropdown-toggle change" id="navbarDropdowns" href="" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+          <!-- <i class="fa-solid fa-chart-line fs-3 change" style="color: #516799;"></i> -->
+          <i class="fa-solid fa-chart-line fs-3 change"></i>
+        </a>
+        <ul class="dropdown-menu custom-dropdown-menu sensorSwitch" aria-labelledby="navbarDropdowns" (click)="showSwitch($event)">
+          <li>
+            <!-- graph toggle button -->
+            <div class="graph-content">
+              <ul>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-1">Current</label>
+
+                    <label class="graph-switch" for="switch-checkbox-1">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-1" value="current" data-checkbox="0"
+                        (change)="getGraphSwitch($event, 'current')" [checked]="graphHeadings.includes('current')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-2">Voltage</label>
+
+                    <label class="graph-switch" for="switch-checkbox-2">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-2" data-checkbox="1" value="voltage"
+                        (change)="getGraphSwitch($event, 'voltage')" [checked]="graphHeadings.includes('voltage')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-3">PH</label>
+
+                    <label class="graph-switch" for="switch-checkbox-3">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-3" data-checkbox="2" value="ph"
+                        (change)="getGraphSwitch($event, 'ph')" [checked]="graphHeadings.includes('ph')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-4">ORP</label>
+
+                    <label class="graph-switch" for="switch-checkbox-4">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-4" data-checkbox="3" value="orp"
+                        (change)="getGraphSwitch($event, 'orp')" [checked]="graphHeadings.includes('orp')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-5">DO</label>
+
+                    <label class="graph-switch" for="switch-checkbox-5">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-5" data-checkbox="4" value="do"
+                        (change)="getGraphSwitch($event, 'do')" [checked]="graphHeadings.includes('do')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-6">TDS</label>
+
+                    <label class="graph-switch" for="switch-checkbox-6">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-6" data-checkbox="5" value="tds"
+                        (change)="getGraphSwitch($event, 'tds')" [checked]="graphHeadings.includes('tds')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-7">ABC</label>
+
+                    <label class="graph-switch" for="switch-checkbox-7">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-7" data-checkbox="6" value="abc"
+                        (change)="getGraphSwitch($event, 'abc')" [checked]="graphHeadings.includes('abc')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+                <li class="relative">
+                  <div class="item">
+                    <label class="label" for="switch-checkbox-8">DEF</label>
+
+                    <label class="graph-switch" for="switch-checkbox-8">
+                      <input class="sr-only" type="checkbox" id="switch-checkbox-8" data-checkbox="7" value="def"
+                        (change)="getGraphSwitch($event, 'def')" [checked]="graphHeadings.includes('def')">
+                      <div class="switch-marker" aria-hidden="true"></div>
+                    </label>
+                  </div>
+
+                  <div class="divider" aria-hidden="true"></div>
+                </li>
+              </ul>
+            </div>
+            <!-- graph toggle button -->
+          </li>
+        </ul>
+      </li>
+
+      <li class='nav-item md-dropdown dropstart change' (click)="onDevices()">
+        <a class='nav-link dropdown-toggle change' href='' id='navbarDropdown' role='button' data-bs-toggle='dropdown'
+          aria-expanded='false'>
+          <!-- <i class="bi bi-diagram-3-fill change" style="color: #516799;"></i> -->
+          <i class="bi bi-diagram-3-fill change"></i>
+        </a>
+        <ul class='dropdown-menu custom-dropdown-menu' aria-labelledby='navbarDropdown'
+          (click)='onDropdownClick($event)'>
+          <li *ngFor='let device of devicesNamesList'>
+            <div class='device-flex'>
+              <div class='name-styles'>
+                <p><span class='title'>ID: </span>{{device[1]}}</p>
+                <p><span class='title'>Dev_Name: </span>{{device[0]}}</p>
+              </div>
+              <div>
+                <p>
+                  <label class='switch'>
+                    <input type='checkbox' [checked]='devicesStatus[device[1]]'
+                      (change)='onToggleChange($event, device)'>
+                    <span class='slider round'></span>
+                  </label>
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li class='nav-item change' (click)="toggleTheme()">
+        <!-- <img src='./assets/img/nightlight.png' /> -->
+        <i class="bi bi-brightness-high-fill change"></i>
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Calendar'> -->
+        <!-- <img src='./assets/img/Calendar.png' /> -->
+        <i class="bi bi-calendar-week change" title='Calendar' (click)="openCalenderModel()"></i>
+        <!-- </button> -->
+
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Notifications'> -->
+        <!-- <img src='./assets/img/notification.png' /> -->
+        <i class="bi bi-bell-fill change"></i>
+        <!-- </button> -->
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Help'> -->
+        <!-- <img src='./assets/img/help-circle.png' /> -->
+        <i class="bi bi-question-circle change" title="Get Help"></i>
+        <!-- </button> -->
+      </li>
+
+      <li class='nav-item change'>
+        <!-- <button class='no-button' title='Logout' (click)='onLogout()'> -->
+        <i class='fa-solid fa-arrow-right-from-bracket logout change' (click)='onLogout()'></i>
+        <!-- </button> -->
+      </li>
+
+    </ul>
+  </nav>
+  <!-- model -->
+  <div class="calender-container">
+    <div class="card">
+      <div class="card-head">
+        <h2>Calender</h2><i class="bi bi-x" (click)="openCalenderModel()"></i>
+      </div>
+      <hr>
+      <!-- calender -->
+      <app-calender></app-calender>
+      <!-- calender -->
+    </div>
+  </div>
+  <!-- model -->
+
+  <!-- side navbar start -->
+  <div class="sidebar">
+    <div class='name-profile-container'>
+      <img class="logo-size" src="./assets/img/profiler1.png">
+    </div>
+
+    <div class='each-main-item active-item each-list'>
+      <div style="width: 30px; height: 30px; position: relative">
+        <div
+          style="width: 6.16px; height: 6.16px; left: 15.08px; top: 0px; position: absolute; transform: rotate(46.63deg); transform-origin: 0 0; border-radius: 1px; border: 1.50px white solid">
+        </div>
+        <div
+          style="width: 12.32px; height: 12.31px; left: 14.90px; top: 12.43px; position: absolute; transform: rotate(46.63deg); transform-origin: 0 0; background: #DF7443; border-radius: 1px; border: 1.50px white solid">
+        </div>
+        <div
+          style="width: 6.16px; height: 11.87px; left: 8.48px; top: 6.21px; position: absolute; transform: rotate(46.63deg); transform-origin: 0 0; border-radius: 1px; border: 1.50px white solid">
+        </div>
+        <div
+          style="width: 6.16px; height: 11.87px; left: 17.77px; top: 11px; position: absolute; transform: rotate(-46.63deg); transform-origin: 0 0; border-radius: 1px; border: 1.50px white solid">
+        </div>
+      </div>
+    </div>
+
+    <div class='each-main-item each-list' (click)="accountsContainer()" title="Click to See Details">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-lines-fill"
+        viewBox="0 0 16 16" color="white">
+        <path
+          d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
+      </svg>
+    </div>
+
+    <div *ngIf="accountShow" class="account-details" title="Click to see account details">
+      <div *ngFor="let tab of accountsData.items; let i = index" class="btn-group dropend">
+        <div type="button" class="btn dropdown-toggle account-button" data-bs-toggle="dropdown" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="27" height="30" fill="currentColor" class="bi bi-person-gear"
+            viewBox="0 0 16 16" color="white">
+            <path
+              d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382zM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0" />
+          </svg>
+        </div>
+
+        <div class='account-details account-full dropdown-menu cursor-pointer' (click)="getAccountData(tab[1])">
+          <!-- Your dynamic content for each tab goes here -->
+
+          <div class="account-between">
+            <p class='details-names'>ID</p>
+            <p>:</p>
+            <p class='details-names color'> {{tab[1]}}</p>
+          </div>
+          <div class="account-between">
+            <p class='details-names'>Name</p>
+            <p>:</p>
+            <p class='details-names color'>{{tab[0]}}</p>
+          </div>
+
+          <div class="account-between">
+            <p class='details-names'>Address</p>
+            <p>: </p>
+            <p class='details-names color'>{{tab[4]}}</p>
+          </div>
+          <div class="account-between">
+            <p class='details-names'>No.of Devices</p>
+            <p>:</p>
+            <p class='details-names color'>{{tab[5]}}</p>
+          </div>
+          <p class='details-names'>Opex</p>
+          <p class='details-names'>Capex</p>
+        </div>
+      </div>
+    </div>
+
+    <div class='each-main-item each-list' title="Recharge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-wallet2"
+        viewBox="0 0 16 16" color="white">
+        <path
+          d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z" />
+      </svg>
+    </div>
+    <div class='each-main-item each-list'>
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart4"
+        viewBox="0 0 16 16" color="white">
+        <path
+          d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+      </svg>
+    </div>
+    <div class='each-main-item each-list' (click)="togglesecondContainer()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-clipboard-data"
+        viewBox="0 0 16 16" color="white">
+        <path
+          d="M4 11a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm6-4a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zM7 9a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0z" />
+        <path
+          d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
+        <path
+          d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
+      </svg>
+      <div *ngIf="showDiagnosisContainer" class='dropup-element'>
+        <img src='./assets/img/dropdown.png' />
+      </div>
+    </div>
+
+    <div *ngIf="showDiagnosisContainer" class='diagnosis-details'>
+      <div class='ocr-description' (click)="ocrcontainerclick()">
+        <!-- <p>OCR</p> -->
+        <i class="fa-solid fa-file-medical" title="OCR"></i>
+
+        <!-- <div *ngIf="fishwatershowdropup" class='dropup-ocr-element dropup-element'>
+        <img src='./assets/img/dropup.png' />
+      </div>
+      <div *ngIf="showfishwaterbody" class='dropup-element dropup-ocr-element'>
+        <img src='./assets/img/dropdown.png' />
+      </div> -->
+      </div>
+      <div *ngIf="showfishwaterbody" class="ocr-dropdown">
+        <div class='ocr-dropdown-details'>
+          <!-- <p>Fish/Shrimp</p> -->
+          <i class="fa-solid fa-fish-fins" title="Fish/Shrimp"></i>
+          <p>Fish/Shrimp</p>
+        </div>
+        <div class="no-button ocr-dropdown-details" (click)="onOcrCode()">
+          <div class='ocr-dropdown-details'>
+            <!-- <p>Waterbody</p> -->
+            <i class="bi bi-droplet-half" title="Waterbody"></i>
+            <p>Waterbody</p>
+          </div>
+        </div>
+
+      </div>
+      <div class='ocr-description'>
+        <!-- <p>Consulting</p> -->
+        <i class="fa-solid fa-user-doctor" title="Consulting"></i>
+      </div>
+
+      <div class='ocr-description'>
+        <!-- <p>Medicine</p> -->
+        <i class="fa-solid fa-pills" title="Medicine"></i>
+      </div>
+    </div>
+    <!-- <div class="btn-group dropright">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Dropright
+    </button>
+    <div class="dropdown-menu">
+      hiiii
+    </div>
+  </div> -->
+  </div>
+
+  <!-- Dashboard Pagees -->
+  <div class="dashboard-top change">
+    <div class=" mt-4 ml-5">
+      <div class="row weather-map">
+        <div class="col-md-8 ml-md-5 map-section">
+          <div id="map" class='map-container' style="height: 400px; width:100%;">
+          </div>
+        </div>
+        <div class="col-md-3 account-weather">
+          <div class="card-weather-live change">
+            <div class="each-item-weather">
+              <div>
+                <h1 class="name-heading">Temperature</h1>
+                <h1 class="heading-live-weather">{{ (wData.main.temp - 273.15).toFixed(2) }}<sup>°</sup>C</h1>
+              </div>
+              <div class="bg-icon-image">
+                <img src="../assets/img/humidityTemp.png" class="image-icon" />
+              </div>
+            </div>
+            <div class="each-item-weather">
+              <div>
+                <h1 class="name-heading">Humidity</h1>
+                <h1 class="heading-live-weather">{{ wData.main.humidity }}%</h1>
+              </div>
+              <div class="bg-icon-image">
+                <img src="../assets/img/dropwater.png" class="image-icon" />
+              </div>
+            </div>
+            <div class="each-item-weather">
+              <div>
+                <h1 class="name-heading">Wind Speed</h1>
+                <h1 class="heading-live-weather">{{ wData.wind.speed }} km/hr</h1>
+              </div>
+              <div class="bg-icon-image">
+                <img src="../assets/img/wind.png" class="image-icon" />
+              </div>
+            </div>
+            <div class="each-item-weather">
+              
+                <h1 class="name-heading">Account City</h1>
+                <h1 class="heading-live-weather pondcity">{{ pondCity }} </h1>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- chart -->
+    <!-- <div #chartContainer class="chart-container change"></div> -->
+    <!-- <app-chart [graphHeadings]="graphHeadings">
+  <div #chartContainer class="chart-container change"></div>
+</app-chart> -->
+    <!-- <div class="container mt-4"> -->
+    <div class="row ml-4 mr-4 mr-md-5 graph-chart">
+      <div class="col-md-6 g-4" *ngFor="let heading of graphHeadings">
+        <app-chart [graphHeadings]="heading" [labelName]="labelName"
+          [sensorDataForChild]="sensorDataForChild"></app-chart>
+      </div>
+    </div>
+    <!-- </div> -->
+    <!-- <app-chart >
+</app-chart> -->
+    <!-- chart -->
+    <!-- footer -->
+    <div class="footer-end fixed-bottom ">
+      <div class="footer">
+        <p>Tech by Bariflolabs <sup><img class="image-suffix" src="./assets/img/registered.png"></sup></p>
+        <p>Copyright by Bariflolabs <sup><img class="image-suffix" src="./assets/img/registered.png"></sup></p>
+
+      </div>
+    </div>
+    <!-- footer -->
+
+
+  </div>

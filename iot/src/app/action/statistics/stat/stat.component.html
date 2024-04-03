@@ -1,0 +1,91 @@
+
+  <body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between" >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+        <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 50px; height: 50px;">
+        <h1 class="mb-0 mt-2">Bariflo Labs</h1>
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button mat-button [matMenuTriggerFor]="menu"><div class="name-icon">BN</div></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
+          
+          <button mat-button [matMenuTriggerFor]="menu"><h1 class="username">Biswajit Nayak</h1></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
+        </div>
+    </mat-toolbar>
+
+     <mat-sidenav-container>
+        <mat-sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>  
+                <!-- Menu item with a sub-menu -->
+                <mat-list-item>
+                  <a mat-list-item href="dashboard"><i class="bi bi-house-fill icon-size"></i> Accounts</a>
+                </mat-list-item>
+                <mat-list-item>
+                  <a mat-list-item href="#"><i class="bi bi-plus-square-fill"></i> New Devices</a>
+                </mat-list-item>
+                <mat-list-item>
+                  <a mat-list-item href="users"><i class="bi bi-people-fill"></i> Users</a>
+                </mat-list-item>
+                <mat-list-item class="mx-3" (click)="toggleSubMenu('submenu1')">
+                  <span><i class="bi bi-gear-fill"></i> Settings</span>
+                  
+                </mat-list-item>
+                <mat-list-item *ngIf="isSubMenuOpen('submenu1')">
+                  <a mat-list-item href="settings">Device Types</a>
+                 
+                </mat-list-item>
+              </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <select class="primary mx-2 p-2" > 
+            <option value="" selected disabled >Time Period</option>
+            <option value="1 Day">1 Day</option>
+            <option value="7 Day">7 Days</option>
+            <option value="30 Day">30 Days</option>
+          </select>
+          <button class="btn btn-outline-primary refresh mx-2" (click)="onRefresh()">Refresh</button>
+          <button class="btn btn-primary mx-5" (click)="onBackStats()">Back</button>
+          <hr>
+         <div class="row">
+           <div class="col-lg-6">
+            <h1>Line chart</h1>
+            <mat-card>
+             <mat-card-header></mat-card-header>
+             <mat-card-content>
+               <canvas id="linechart"></canvas>
+             </mat-card-content>
+            </mat-card>
+           </div>
+           <div class="col-lg-6">
+            <h1>Line chart</h1>
+            <mat-card>
+             <mat-card-header></mat-card-header>
+             <mat-card-content>
+               <canvas id="linechart"></canvas>
+             </mat-card-content>
+            </mat-card>
+           </div>
+         </div>
+        </mat-sidenav-content>
+     </mat-sidenav-container>   
+     <nav class="navbar fixed-bottom footer">
+      <div class="container-fluid">
+        <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+      </div>
+    </nav>
+
+</body>

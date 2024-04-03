@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>Slider Input</h2>
+<hr/>
+<mat-dialog-content>
+          <table class="table table-bordered table-striped table-hover">
+             <tbody>
+                 <tr>
+                     <td>
+                      Display Name
+                       
+                     </td>
+                    
+                     <td>
+                      <input [(ngModel)]="displayname" type="text" class="p-2 color color:focus" value="Slider Input" >
+                       
+                     </td>
+                     
+                 </tr>
+                 <tr>
+                  <td>
+                    Virtual Pin
+                    
+                  </td>
+                 
+                  <td>
+                    <input type="text" [(ngModel)]="virtualpin" class="p-2 color color:focus" value="4" >
+                    
+                  </td>
+                  
+              </tr>
+              <tr>
+                <td>
+                  Min
+                  
+                </td>
+               
+                <td>
+                  <input type="text" [(ngModel)]="minvalue"  class="p-2 color color:focus" value="0" >
+                  
+                </td>
+                
+            </tr>
+            <tr>
+              <td>
+               Max
+                
+              </td>
+             
+              <td>
+                <input type="text" [(ngModel)]="maxvalue"   class="p-2 color color:focus" value="10" >
+                
+              </td>
+              
+          </tr>
+          <tr>
+            <td>
+             
+              Step Value
+            </td>
+           
+            <td>
+              <input type="text" [(ngModel)]="stepvalue"  class="p-2 color color:focus" value="1" >
+              
+            </td>
+            
+        </tr>
+        <tr>
+          <td colspan="2"  class="row-height">
+           <input type="checkbox" id="allowuser" class="check-size" checked>    
+           <label class="mx-2" for ="allowuser">Allow User Access</label>        
+          </td>
+          
+          
+      </tr>
+      
+        </tbody>
+
+          </table>
+    <button type="submit" (click)="onSlider()" class="btn custom-button">Submit</button>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+ <!-- <button mat-button mat-dialog-close>Close</button>-->
+  <!-- You can also add additional buttons here --></mat-dialog-actions>
+
+
+  

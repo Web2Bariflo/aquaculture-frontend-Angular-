@@ -1,0 +1,159 @@
+<body class="main-container">
+  <mat-toolbar class="mb-0 d-flex flex-row justify-content-between fixed-top" >
+    <div class="d-flex flex-row"> 
+      <div class="d-flex flex-column justify-content-center bar-div" (click)="opened=!opened">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <div class="d-flex flex-row">
+      
+     <!-- <h1 class="mb-0 mt-2 top-heading">Bariflo Labs</h1> -->
+    </div>
+    </div>
+      <div class="d-flex flex-row">
+        <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}
+
+        </button>
+        <mat-menu #menu="matMenu">
+   
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+
+      </div>
+  </mat-toolbar>
+
+
+     <mat-sidenav-container class="nav-space">
+      <mat-sidenav mode="side" class="side-bar" [(opened)]="opened">
+        <mat-nav-list class="top-space">
+        
+          <div class="lg-side">
+          <mat-list-item class="mt-3 selected-tab">
+            <a mat-list-item href="general-dashboard">
+              <img src="./assets/img/grid.png" class="icon-sizing">
+              <span class="icon-text">Dashboard</span>
+            </a>
+          </mat-list-item>
+
+          <mat-list-item class="mt-3 ">
+            <a mat-list-item href="ocr-code">
+              <!-- <img src="./assets/img/Vector.png" class="icon-sizing"> -->
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="icon-text">OCR</span>
+            </a>
+          </mat-list-item>
+   
+          <mat-list-item class="mt-3 ">
+            <a mat-list-item href="profile-page">
+              <img src="./assets/img/person.png" class="icon-sizing">
+              <span class="icon-text">User Profile</span>
+            </a>
+          </mat-list-item>
+          </div>
+
+          <div class="sm-side">
+            <div item class="mt-3 selected-tab">
+              <a href="general-dashboard">
+                <img src="./assets/img/grid.png" class="icon-sizing">
+               
+              </a>
+            </div>
+     
+            <div class="mt-3 ">
+              <a href="profile-page">
+                <img src="./assets/img/person.png" class="icon-sizing">
+        
+              </a>
+            </div>
+            </div>
+
+        </mat-nav-list>
+      </mat-sidenav>
+        <mat-sidenav-content>
+          <!-- <button [disabled]= "!permission.devicecreate" class="btn btn-primary" (click)="openDialog7()" >New Device</button> -->
+          <div class="devices-step-container">
+
+            <div class="container-overall-bg">
+        
+            <div class="container-devicebg">
+        
+                 <p class="card-heading">Accounts</p>
+        
+            </div>  
+        
+               <img src="./assets/img/arrow.png" alt="arrow" class="arrow-image"/>
+        
+            <div class="container-devicebg-name">
+        
+             <p class="card-heading">Devices</p>
+        
+            </div>
+        
+        </div>
+        </div>
+         <div class="row">
+          <div class="col-lg-6 mb-3" *ngFor="let device of devicedetails.result">
+            <mat-card class="card">   
+              <div class="device-content" >
+                <div class="d-flex flex-column">
+                <p class="device-head mx-3 my-2">Device</p>
+                <div class="mx-4">
+                  <i class="bi bi-square-fill " [ngClass]="{'square-on': getStatus(device[0]), 'square': !getStatus(device[0])}"></i>
+                  {{ getStatus(device[0]) ? 'ON' : 'OFF' }}
+                </div>
+              </div>
+                 
+                  <div class="my-3 mx-2">
+                <!-- <button [disabled]="!permission.deviceedit" (click)="onClick7(device)" class="btn btn-warning mx-1"><i class="bi bi-pencil-square mx-1" ></i></button>
+                                  <button [disabled]="!permission.devicedelete" (click)="onDelete(device[0])" class="btn btn-danger mx-2"><i class="bi bi-trash"></i></button>
+                                  <button class="btn btn-primary mx-2"><i class="bi bi-grid-fill" ></i></button> -->
+                </div>
+            </div>
+              <hr>
+              <mat-card-content>
+                <div class="d-flex flex-row justify-content-between name-style">
+                  <span>Device Id </span>
+                  <span class="name-style">{{device[0]}}</span>
+                </div>
+                  <hr>
+                  <div class="d-flex flex-row justify-content-between name-style">
+                    <span>Device Name</span>
+                    <span  class="name-style">{{device[1]}}</span>
+                  </div>
+                  <hr>
+                  <div class="d-flex flex-row justify-content-between name-style">
+                    <span>Device Type</span>
+                    <span  class="name-style">{{device[2]}}</span>
+                  </div>
+                  <hr>
+                  <div class="d-flex flex-row justify-content-between name-style">
+                    <span>Device Version</span>
+                    <span  class="name-style">{{device[3]}}</span>
+                  </div>
+                  <hr>
+                  <span>
+                    <button  class="btn success-color button-controls" (click)="onClickControls(device)" >CONTROLS</button>
+                    <button class="btn stats-color mx-3 button-stats"(click)="onClick8(device)">STATS</button>
+                  </span>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          
+         </div>
+        </mat-sidenav-content>
+
+            
+      
+     </mat-sidenav-container>  
+    
+     <nav class="navbar fixed-bottom footer">
+      <div class="container-fluid d-flex flex-row justify-content-end">
+       
+        <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 35px; height: 40px;">
+      </div>
+    </nav>
+
+</body>
+
+

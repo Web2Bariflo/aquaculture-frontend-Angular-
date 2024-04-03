@@ -1,0 +1,32 @@
+<mat-card class="card-width">
+    
+    <div class="d-flex flex-row justify-content-between">
+      <mat-card-header>
+        <mat-card-title>Create Device Type</mat-card-title>
+        
+      </mat-card-header>
+      <i class="bi bi-file-excel-fill cross mt-2 mx-2" (click)="onClose()"></i>
+    </div>
+    
+    
+    
+   <hr>
+    <mat-card-content>
+      <!-- Add content for the card body here -->
+      <div>
+          <div class="d-flex flex-column">
+          <p class="name-label mx-3">Name</p>
+        <input type="text" [(ngModel)]="devicename" name="devicename" class="custom-input custom-input:focus mx-3 p-2" placeholder="Name" >
+          <p class="name-label mx-3 my-3">Version</p>
+          <input type="text" [(ngModel)]="deviceversion" name="deviceversion" class="custom-input custom-input:focus mx-3 p-2" placeholder="Version" >
+          </div>
+          <div class="my-4">
+          <input [(ngModel)] ="ischecked" id="checkbox" type="checkbox" class="ml-3 check-size">
+          <label for="checkbox" >Enabled</label>
+         </div>
+          <button (click)="onCreateDevice()" class="submit-button mx-3 btn btn-success" >Create</button>
+      </div>
+    </mat-card-content>
+    
+   
+  </mat-card>

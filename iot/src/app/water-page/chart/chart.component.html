@@ -1,0 +1,20 @@
+
+<div class="card change chart-card" #chartCard>
+    <div class="card-body change">
+      <div class="flex justify-between"><h1>{{ graphHeadings }}</h1>
+    <div class="download-Chart">
+        <div class="chart-download-icon" (click)="showChartButton(chartCard)">
+            <i class="bi bi-download fw-bold fs-4 curser" style="color: blue; cursor: pointer; font-weight: bold;" title="download"></i>
+        </div>
+        <ul class="chart-download-dropdown">
+            <li title="Day 1">1</li>
+            <li title="Day 7">7</li>
+            <li title="Day 15">15</li>
+            <li title="Day 30">30</li>
+            <li title="Custom day"><i class="bi bi-calendar-date"></i></li>
+        </ul>
+    </div>
+    </div>
+      <canvas #chartContainer></canvas>
+    </div>
+  </div>

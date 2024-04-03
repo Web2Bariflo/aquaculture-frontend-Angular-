@@ -1,0 +1,124 @@
+
+<body class="main-container">
+  <mat-toolbar class="mb-0 d-flex flex-row justify-content-between" >
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <div class="d-flex flex-row">
+      
+        <button class="home-button"><h1 class="mb-0 mt-2 top-heading">Bariflo Labs</h1></button>
+    </div>
+    </div>
+      <div class="d-flex flex-row">
+        <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}
+
+        </button>
+        <mat-menu #menu="matMenu">
+   
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+
+      </div>
+  </mat-toolbar>
+   
+       <mat-sidenav-container>
+        <mat-sidenav mode="side" class="side-bar" [(opened)]="opened">
+          <mat-nav-list class="top-space"> 
+              <!-- Menu item with a sub-menu -->
+             <!-- <mat-list-item>
+                <a mat-list-item href="dashboard"><i class="bi bi-house-fill icon-size"></i> Accounts</a>
+              </mat-list-item>
+              <hr class="my-0">-->
+              <mat-list-item>
+                <a mat-list-item href="admin-users"><i class="bi bi-people-fill"></i> Users</a>
+              </mat-list-item>
+              <hr class="my-0">
+              <mat-list-item>
+                <a mat-list-item href="users-check"><i class="bi bi-person-check check-size"></i> Users Check</a>
+              </mat-list-item>
+              <hr class="my-0">
+              
+              <mat-list-item class="mx-3" (click)="toggleSubMenu('submenu1')">
+                <span><i class="bi bi-gear-fill"></i> Settings</span>
+                
+              </mat-list-item>
+              <mat-list-item *ngIf="isSubMenuOpen('submenu1')">
+                <a mat-list-item href="admin-device-types">Device Types</a>
+               
+              </mat-list-item>
+            </mat-nav-list>
+           </mat-sidenav>
+           <mat-sidenav-content>
+            <button class="btn btn-primary" (click)="openDialog2()">ADD USER</button>
+            <hr>
+            <div>
+              <mat-card>   
+                <mat-card-header>
+                  Users
+                </mat-card-header>
+                <hr>
+                <mat-card-content>
+                    <div class="table-responsive text-nowrap">
+                      <table class="table table-bordered table-striped table-hover">
+                         <thead>
+                            <tr>
+                              <th>User Name</th>
+                              <th>Phone Number</th>
+                              <th>User Type</th>
+                              <th>Actions</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                          
+                          <ng-container *ngFor="let item of getCurrentPageData()">
+                         
+                             <tr  *ngIf="item[2] === 'general'" >
+                                 <td>
+                                   {{item[0]}}
+                                 </td>
+                                 <td>
+                                  {{item[1]}}
+                                 </td>
+                                 <td>
+                                  {{item[2]}}
+                                 </td>
+                                 <td>
+                                   <button class="btn btn-warning mx-1"(click)="openDialog3(item)" ><i class="bi bi-pencil-square" ></i></button>
+                                   <button (click)="onDeleteUser(item[1],item[2])" class="btn btn-danger mx-1"><i class="bi bi-trash"></i></button>
+                                   <!-- <button class="btn btn-primary mx-1" (click)="onPermissions(item[1],item[2])" ><i class="bi bi-grid-fill"></i> </button> -->
+                                   <button class="btn btn-success mx-1" (click)="onAccounts(item[1],item[2])" ><i class="bi bi-briefcase"></i> </button>
+                                 </td>
+                                 
+                             </tr>
+                          </ng-container>
+                             
+
+                         </tbody>
+                        
+                      
+                      </table>
+
+                    </div>
+                </mat-card-content>
+              </mat-card>
+              <button class="btn btn-primary custom-button mt-1 mx-2 p-1" (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span class="my-5">Page {{ currentPage }} of {{ totalPages }}</span>
+            <button class="btn btn-success custom-button mt-1 mx-2 p-1" (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+            </div>
+          </mat-sidenav-content>
+       </mat-sidenav-container>
+    
+<!--        
+                          
+       <nav class="navbar fixed-bottom footer">
+        <div class="container-fluid d-flex flex-row justify-content-between">
+          <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+          <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 40px; height: 40px;">
+        </div>
+      </nav> -->
+   
+   </body>
+  

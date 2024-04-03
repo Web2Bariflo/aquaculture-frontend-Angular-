@@ -1,0 +1,94 @@
+<!-- 
+<body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between" >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+        <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 50px; height: 50px;">
+        <h1 class="mb-0 mt-2">Bariflo Labs</h1>
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button class="name-icon mx-3" [matMenuTriggerFor]="menu">BN</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+          
+          <button class="username" [matMenuTriggerFor]="menu">Biswajit Nayak</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout1()">Logout</button>
+          </mat-menu>
+        </div>
+    </mat-toolbar>
+   
+       <mat-sidenav-container>
+           <mat-sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>  
+              <!-- Menu item with a sub-menu -->
+             <!-- <mat-list-item>
+                <a mat-list-item href="dashboard"><i class="bi bi-house-fill icon-size"></i> Accounts</a>
+              </mat-list-item>
+              <hr class="my-0">-->
+              <!-- <mat-list-item>
+                <a mat-list-item href="admin-users"><i class="bi bi-people-fill"></i> Users</a>
+              </mat-list-item>
+              <hr class="my-0">
+              <mat-list-item>
+                <a mat-list-item href="admin-new-device"><i class="bi bi-plus-square-fill"></i> New Devices</a>
+              </mat-list-item>
+              <hr class="my-0">
+              
+              <mat-list-item class="mx-3" (click)="toggleSubMenu('submenu1')">
+                <span><i class="bi bi-gear-fill"></i> Settings</span>
+                
+              </mat-list-item>
+              <mat-list-item *ngIf="isSubMenuOpen('submenu1')">
+                <a mat-list-item href="admin-device-types">Device Types</a>
+               
+              </mat-list-item>
+            </mat-nav-list>
+           </mat-sidenav> -->
+           
+            <div>
+              <mat-card class="card-width">   
+          
+                
+<div class="d-flex flex-row justify-content-between">
+  <mat-card-title class="mx-3 my-2 heading">New Device</mat-card-title>
+  <i class="bi bi-file-excel-fill cross mt-2 mx-2" (click)="onClose()"></i>
+</div>
+                <hr>
+                <!-- <p class="name-label mx-3 my-1">Device Title</p>
+                <input type="text" class="custom-input custom-input:focus mx-3 p-2" placeholder="Device Title" > -->
+                <p class="name-label mx-3 my-1">Device Name</p>
+                <input [(ngModel)]="devicename" name="devicename" type="text" class="custom-input custom-input:focus mx-3 p-2" placeholder="Device Name" >
+                <p class="name-label mx-3 my-2">Device Type</p>
+                <select [(ngModel)]="selectdevice"  class="custom-input custom-input:focus mx-3 p-2 drop-width">
+                    <option value="" selected disabled>
+                        Select Device Type
+                    </option>
+                    <option *ngFor="let device of devicedetails.results" [value]="device[0]" >{{device[0]}}</option>
+                  
+                </select>
+                <div class="d-flex flex-row">
+                <button (click)="onAddDevice()" class="btn save-button mx-3 my-3">Add Device</button>
+                <!-- <button class="btn save-button color-change mx-4 my-3" (click)="OnAction()" >CANCEL</button> -->
+                </div>
+                <p class="error mx-3">{{errorMsg}}</p>
+                </mat-card>
+            </div>
+       
+       <!-- <nav class="navbar fixed-bottom footer">
+        <div class="container-fluid">
+          <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+        </div>
+      </nav>
+   
+   </body> -->
+  

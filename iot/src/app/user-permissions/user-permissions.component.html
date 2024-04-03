@@ -1,0 +1,154 @@
+
+<body >
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between " >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+          <button class="home-button" (click)="onclickHome()"><img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 50px; height: 50px;"></button>
+          <button class="home-button" (click)="onclickHome()"><h1 class="mb-0 mt-2">Bariflo Labs</h1></button>
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button class="name-icon mx-3" [matMenuTriggerFor]="menu">          {{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+          
+          <button class="username" [matMenuTriggerFor]="menu">
+            {{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile.split(' ')[0].slice(1))+' '+(userNameProfile| uppercase).split(' ')[1][0]+(userNameProfile.split(' ')[1].slice(1))}} </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout1()">Logout</button>
+          </mat-menu>
+        </div>
+    </mat-toolbar>
+   
+       <mat-sidenav-container>
+           <mat-sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>  
+              <!-- Menu item with a sub-menu -->
+             <!-- <mat-list-item>
+                <a mat-list-item href="dashboard"><i class="bi bi-house-fill icon-size"></i> Accounts</a>
+              </mat-list-item>
+              <hr class="my-0">-->
+              <mat-list-item>
+                <a mat-list-item href="admin-users"><i class="bi bi-people-fill"></i> Users</a>
+              </mat-list-item>
+              <hr class="my-0">
+              <mat-list-item>
+                <a mat-list-item href="admin-new-device"><i class="bi bi-plus-square-fill"></i> New Devices</a>
+              </mat-list-item>
+              <hr class="my-0">
+              
+              <mat-list-item class="mx-3" (click)="toggleSubMenu('submenu1')">
+                <span><i class="bi bi-gear-fill"></i> Settings</span>
+                
+              </mat-list-item>
+              <mat-list-item *ngIf="isSubMenuOpen('submenu1')">
+                <a mat-list-item href="admin-device-types">Device Types</a>
+               
+              </mat-list-item>
+            </mat-nav-list>
+           </mat-sidenav>
+           <div class="row mt-5 pt-5 mx-3 main-container">
+            <!-- <div class="col">
+                <mat-card>   
+                    <mat-card-header>
+                      Assigned Accounts
+                    </mat-card-header>
+                    <hr>
+                    <mat-card-content>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" >Check me!</mat-checkbox>
+                        </span>
+                        
+                    </mat-card-content>
+                </mat-card>
+            </div> -->
+             <div class="col">
+                <mat-card>   
+                    <mat-card-header>
+                      Assigned Permission
+                    </mat-card-header>
+                    <hr>
+                    <mat-card-content >
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.usercreate" >USER_ADD</mat-checkbox>
+                          </span>
+                          <hr>
+                          <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.useredit"  >USER_EDIT</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.userdelete"  >USER_DELETE</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.userview"   >USER_VIEW</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.accountcreate" >ACCOUNT_ADD</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin"[(ngModel)]="permission.accountedit"  >ACCOUNT_EDIT</mat-checkbox>
+                        </span>
+                        <hr>
+                        
+                       
+                          <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.accountview"  >ACCOUNT_VIEW</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.accountdelete"   >ACCOUNT_DELETE</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.devicecreate"  >DEVICE_ADD</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin"[(ngModel)]="permission.deviceedit" >DEVICE_EDIT</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin"[(ngModel)]="permission.deviceview"   >DEVICE_VIEW</mat-checkbox>
+                        </span>
+                        <hr>
+                       <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.devicedelete" >DEVICE_DELETE</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin"[(ngModel)]="permission.deviceinstruction"   >DEVICE_INSTRUCTION</mat-checkbox>
+                        </span>
+                        <hr>
+                        <span class="example-list-section">
+                            <mat-checkbox class="example-margin" [(ngModel)]="permission.setting" >SETTINGS</mat-checkbox>
+                        </span>
+                       
+                    </mat-card-content>
+                    
+                </mat-card>
+                <button (click)="onSave()" class="btn btn-primary pb-4 save-button my-2">save</button>
+             </div>
+            </div>
+           
+            <nav class="navbar fixed-bottom footer">
+                <div class="container-fluid">
+                  <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+                </div>
+              </nav>
+           
+       </mat-sidenav-container>
+       
+   </body>
+  

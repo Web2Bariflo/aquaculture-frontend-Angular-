@@ -1,0 +1,78 @@
+<div class="mat-Element">
+
+    <div class="container-width">
+
+        <div class="container-nav">
+
+            <p class="new-User">New User Details</p>
+
+        </div>
+
+        <div class="form-wrapper">
+
+            <div class="mobileForm">
+
+
+
+                <div class="name-container">
+
+                    <p class="name-user">Name</p>
+
+                    <p class="name-value"><span class="style-span">:</span>{{basicDetails[0]}}</p>
+
+                </div>
+
+                <div class="name-container">
+
+                    <p class="name-user">Mobile No:</p>
+
+                    <p class="name-value"><span class="style-span">:</span>{{basicDetails[1]}}</p>
+
+                </div>
+
+                <div class="name-container">
+
+                    <p class="name-user">Aadhaar No:</p>
+
+                    <p class="name-value"><span class="style-span">:</span>{{basicDetails[4]}}</p>
+
+                </div>
+
+                <div class="name-container">
+
+                    <p class="name-user">Email Id</p>
+
+                    <p class="name-value"><span class="style-span">:</span>{{basicDetails[2]}}</p>
+
+                </div>
+
+                <div class="name-container">
+
+
+                    <p class="name-user my-2">Password</p>
+                    <span class="style-span my-2">:</span><input id="phoneNo" name="password" [(ngModel)]="password"
+                        type="password" placeholder="Create Password" class="input-style input-style:focus">
+
+
+                </div>
+                <p class="errorColor">{{errorMsg}}</p>
+
+                <div class="button-container-user">
+
+                    <button class="accept-button" (click)="onAccounts()">Next</button>
+
+                    <button class="reject-button">Reject</button>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>

@@ -1,0 +1,93 @@
+<div class="mat-Element">
+ 
+    <div class="container-width">
+ 
+        <div class="container-nav">
+ 
+            <p class="new-User">New User Details</p>
+ 
+        </div>
+ 
+        <div class="form-wrapper" >
+ 
+          <div class="mobileForm">
+             
+                     <div  class="container-all-labels">
+               
+                     
+
+                 
+                   <div class='each-container-label'>
+                      <div class='container-label'>
+                      <img src='./assets/img/latitude.png'  class='image-logo'/>
+                      <label class='label-style' for='latitude'> Latitude</label>
+                      </div>
+                      <input type='number'  class="input-style input-style:focus" [(ngModel)]="searchLatitude" id='latitude'/>
+                   </div>  
+               
+                     <div>
+                       <div class='container-label'>
+                         <img src='./assets/img/longitude.png'  class='image-logo'/>
+                        <label class=' label-style' for='longitude'> Longitude </label>
+                         </div>
+                       <input type='number'  class="input-style input-style:focus" [(ngModel)]="searchLongitude"  id='longitude'/>
+                     </div>  
+ 
+                           <div class="account ">
+            <div class="d-flex flex-column ">
+                <label for="account" class="label-style" >Account Name</label>
+                  <input class="input-style input-style:focus" [(ngModel)]="accountName" id="account" type="text" >
+                </div>
+        </div>
+       
+           
+                    </div>
+                    <div class='button-elements-container'>
+                    <div class='button-bg'>
+                      <button class='buttonElement' (click)='searchLocation()'><img src='./assets/img/search.png' alt='searchBariflo' class='imagesearch' />Search  </button>
+                </div>
+ 
+                <div class='button-bg'>
+                  <button class='AddButtonElement' (click)='onSubmitPond()'>Submit  </button>
+            </div>
+ 
+          </div>
+         
+                <google-map height="400px"
+                width="650px"
+                [center]="location"
+                [zoom]="zoomin"
+               
+    >
+    <div *ngIf='marklocation'>
+    <map-marker   [position]="{ lat: location.lat, lng: location.lng }">
+ 
+    </map-marker>
+  </div>
+    </google-map>
+ 
+ 
+ 
+               
+             
+                <p class="errorColor">{{outputSuccess}}</p>
+ 
+                <div class="button-container-user">
+ 
+                    <button class="accept-button" (click)="onAccounts()">Next</button>
+ 
+                    <button class="reject-button">Reject</button>
+ 
+                </div>
+ 
+ 
+ 
+              </div>
+ 
+              </div>
+ 
+             
+ 
+            </div>
+ 
+</div>

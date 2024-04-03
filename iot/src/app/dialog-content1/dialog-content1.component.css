@@ -1,0 +1,123 @@
+.headings{
+    font-weight: bold;
+    color: rgb(97, 97, 97);
+ 
+}
+
+.action-button{
+    background-color: rgb(239, 79, 106);
+    border-radius: 4px;
+    border-width: 0px;
+}
+
+.icon-color{
+    color: white;
+    height: 12px;
+    width: 13px;
+    padding: 10px;
+}
+
+.back-color{
+    background-color: rgb(247, 253, 255);
+    border-radius: 2px;
+    border-color: rgb(136, 153, 177);
+    border-width: 1px;
+  }
+
+  .back-color1{
+    background-color: rgb(220, 233, 237);
+    border-radius: 2px;
+    border-color: rgb(228, 235, 246);
+    border:none;
+  }
+
+  .row-height{
+    height: 50px;
+  }
+
+
+  .custom-button{
+    background-color: rgb(40, 145, 40);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    border-width: 0px;
+  }
+  
+
+.checkbox-height{
+    height: 15px;
+    width: 15px;
+}
+
+.disable{
+    background-color: rgb(185, 187, 188);
+    color: rgb(249, 255, 255);
+}
+
+.delete{
+  background-color: rgb(250, 93, 93);
+}
+
+  
+
+.color{
+    border: 2px solid rgb(204, 206, 210); /* Default border color */
+    transition: border-color 0.3s;
+    border-radius: 2px;
+    background-color: rgb(247, 253, 255);
+  }
+
+  .color:focus{
+    border-color: rgba(40, 150, 218, 0.989); /* Border color when focused */
+    outline: none; 
+  }
+  .display-name{
+    font-weight: bold;
+    color: rgb(97, 97, 97);
+  }
+
+  .errormsg{
+    color: red;
+    font-size: 16px;
+  }
+
+  @media only screen and (max-width: 768px){
+
+    .color{
+      width: 100px;
+      font-size: 12px;
+     }
+  
+    .display-name{
+      font-size: 12px;
+    }
+  
+    .allow{
+      font-size: 12px;
+    }
+    .checkbox-height{
+      height: 10px;
+      width: 10px;
+  }
+  .custom-button{
+  width: 40px;
+  height: 20px;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  padding:3px;
+  }
+  .headings{
+    font-size: 12px;
+}
+
+.back-color1{
+width:100px;
+font-size: 12px;
+}
+.errormsg{
+  color: red;
+  font-size: 11px;
+}
+  }

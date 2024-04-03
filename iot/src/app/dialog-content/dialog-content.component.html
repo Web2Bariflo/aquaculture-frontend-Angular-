@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>Slider Input</h2>
+<hr/>
+<mat-dialog-content>
+          <table class="table table-bordered table-striped table-hover">
+             <tbody>
+                 <tr>
+                     <td class="display-name">
+                      Display Name
+                       
+                     </td>
+                    
+                     <td>
+                      <input [(ngModel)]="slider_dis_name" type="text" class="p-2 color color:focus" value="Slider Input" >
+                       
+                     </td>
+                     
+                 </tr>
+                 <tr>
+                  <td class="display-name">
+                    Virtual Pin
+                    
+                  </td>
+                 
+                  <td>
+                    <input type="text" [(ngModel)]="slider_pin" class="p-2 color color:focus" value="4" >
+                    
+                  </td>
+                  
+              </tr>
+              <tr>
+                <td class="display-name">
+                  Min
+                  
+                </td>
+               
+                <td>
+                  <input type="text" [(ngModel)]="slider_min"  class="p-2 color color:focus" value="0" >
+                  
+                </td>
+                
+            </tr>
+            <tr>
+              <td class="display-name">
+               Max
+                
+              </td>
+             
+              <td>
+                <input type="text" [(ngModel)]="slider_max"   class="p-2 color color:focus" value="10" >
+                
+              </td>
+              
+          </tr>
+          <tr>
+            <td class="display-name">
+             
+              Step Value
+            </td>
+           
+            <td>
+              <input type="text" [(ngModel)]="slider_step_value"  class="p-2 color color:focus" value="1" >
+              
+            </td>
+            
+        </tr>
+        <tr>
+          <td colspan="2"  class="row-height">
+           <input type="checkbox" [(ngModel)]="slider_allow_user" id="allowuser" class="check-size" checked>    
+           <label class="mx-2 allow" for ="allowuser">Allow User Access</label>        
+          </td>
+          
+          
+      </tr>
+      <!-- <tr>
+        <td colspan="2">
+         <button class="btn custom-button">ADD</button>
+        </td>        
+    </tr> -->
+
+        </tbody>
+
+          </table>
+      <p class="errormsg">{{errorMsg}}</p>
+    <button type="submit" (click)="onSlider()" class="btn custom-button btn-success">ADD</button>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+ <!-- <button mat-button mat-dialog-close>Close</button>-->
+  <!-- You can also add additional buttons here --></mat-dialog-actions>

@@ -1,0 +1,226 @@
+<!-- 
+<body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between" >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+        <h1 class="mb-0 mt-2 mx-1 top-heading">Bariflo Labs</h1>
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}</button>
+          <mat-menu #menu="matMenu">
+             <button mat-menu-item>Profile</button> -->
+           <!-- <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+          
+          <button class="username" [matMenuTriggerFor]="menu">
+
+            {{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile.split(' ')[0].slice(1))+' '+(userNameProfile| uppercase).split(' ')[1][0]+(userNameProfile.split(' ')[1].slice(1))}} </button>
+          <mat-menu #menu="matMenu">
+          <button mat-menu-item>Profile</button>
+            <button mat-menu-item (click)="onLogout1()">Logout</button>
+          </mat-menu>
+        </div>
+    </mat-toolbar>
+   
+       
+      <nav class="navbar fixed-bottom footer">
+        <div class="container-fluid d-flex flex-row justify-content-between">
+          <a class="navbar-brand mx-3"><h1 class="footer-heading"><span><i class="bi bi-c-circle copyright"></i> </span><span class="year"> 2021-2022</span> Bariflo Labs Limited. All rights reserved.</h1></a>
+          <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 40px; height: 40px;">
+        </div>
+
+
+      </nav>
+
+  </body> -->
+
+
+
+  <body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between fixed-top"  >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center bar-div" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+        
+        <!-- <h1 class="mb-0 mt-2 top-heading">Bariflo Labs</h1> -->
+      </div>
+      </div>
+        <div class="d-flex flex-row">
+          <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}
+  
+          </button>
+          <mat-menu #menu="matMenu">
+     
+            <button mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+  
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container class="nav-space">
+      <mat-sidenav mode="side" class="side-bar" [(opened)]="opened">
+        <mat-nav-list class="top-space">
+        
+          <div class="lg-side">
+          <mat-list-item class="mt-3 ">
+            <a mat-list-item href="users-check">
+              <img src="./assets/img/Vector.png" class="icon-sizing">
+              <span class="icon-text">User Notifications</span>
+            </a>
+          </mat-list-item>
+      
+          <mat-list-item class="mt-3 selected-tab">
+            <a mat-list-item href="general-user-create">
+              <img src="./assets/img/person-add.png" class="icon-sizing">
+              <span class="icon-text">Created Users</span>
+            </a>
+          </mat-list-item>
+      
+          <mat-list-item class="mt-3">
+            <a mat-list-item href="admin-device-types">
+              <img src="./assets/img/diagram-3.png" class="icon-sizing">
+              <span class="icon-text">Device Type Create</span>
+            </a>
+          </mat-list-item>
+          <mat-list-item class="mt-3 ">
+            <a mat-list-item href="admin-ocr">
+    
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="icon-text">OCR</span>
+            </a>
+          </mat-list-item>
+          
+          <mat-list-item class="mt-3 ">
+            <a mat-list-item href="thermal">
+              <!-- <img src="./assets/img/Vector.png" class="icon-sizing"> -->
+              <i class="fa-solid fa-panorama"></i>
+              <span class="icon-text">Thermal</span>
+            </a>
+          </mat-list-item>
+      
+        </div>
+
+        <div class="sm-side">
+          <div class="mt-3 ">
+            <a  href="users-check">
+              <img src="./assets/img/Vector.png" class="icon-sizing">
+   
+            </a>
+          </div>
+      
+          <div class="mt-3 selected-tab">
+            <a  href="general-user-create">
+              <img src="./assets/img/person-add.png" class="icon-sizing">
+     
+            </a>
+          </div>
+      
+          <div class="mt-3">
+            <a  href="admin-device-types">
+              <img src="./assets/img/diagram-3.png" class="icon-sizing">
+        
+            </a>
+          </div>
+
+
+          <div class="mt-3 ">
+            <a  href="admin-ocr">
+    
+              <i class="fa-solid fa-magnifying-glass"></i>
+          
+            </a>
+          </div>
+        </div>
+
+
+        
+
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+
+        <div class="user-designation">
+          <h1 class="designation-style">Logged in as Aqua Admin</h1>
+    
+        </div>
+       <button class="btn btn-primary new-button" (click)="openDialog7()">New Device</button>
+       <hr>
+
+       
+
+      <div class="row">
+       <div class="col-lg-6 mb-3" *ngFor = "let device of devicedetails.result; let i = index"  >
+         <mat-card class="card">   
+           <div class="device-content" >
+             <div class="d-flex flex-column">
+             <p class="device-head mx-3 my-2">Device</p>
+             <!-- <button (click)="onButtonChange()" *ngIf="onOff" class="btn off-button my-1 mx-4"><i class="bi bi-square-fill square-on"></i> ON</button> -->
+             <!-- <button (click)="onButtonChange(i)" class="btn off-button my-1 mx-4">
+           
+             </button> -->
+             <div class="mx-4">
+              <i class="bi bi-square-fill " [ngClass]="{'square-on': getStatus(device[0]), 'square': !getStatus(device[0])}"></i>
+             <span class="on-off">{{ getStatus(device[0]) ? 'ON' : 'OFF' }}</span> 
+            </div>
+             
+           </div>
+              
+               <div class="my-3 mx-2">
+             <button class="btn btn-warning edit-button edit mx-1" (click)="onEditDevice(device)">Edit</button>
+                               <button (click)="onDeleteDevice(device[0])" class="btn btn-danger edit-button  mx-1">Delete</button>
+                               <!-- <button  class="btn btn-primary mx-2"><i class="bi bi-grid-fill" ></i></button> -->
+             </div>
+         </div>
+           <hr>
+           <mat-card-content>
+             <div class="d-flex flex-row justify-content-between name-style">
+               <span>Device Id </span>
+               <span>{{device[0]}}</span>
+             </div>
+               <hr>
+               <div class="d-flex flex-row justify-content-between name-style">
+               <span>Device Name</span>
+               <span>{{device[1]}}</span>
+             </div>
+               <hr>
+               <div class="d-flex flex-row justify-content-between name-style">
+               <span>Device Type</span>
+               <span>{{device[2]}}</span>
+             </div>
+               <hr>
+               <div class="d-flex flex-row justify-content-between name-style">
+                <span>Device Version</span>
+                <span>{{device[3]}}</span>
+              </div>
+              <hr>
+               <span>
+                <div class="buttons-arrange">
+                 <button class="btn-success btn button-controls" (click)="onClickControls(device)">CONTROLS</button>
+                 <button class="btn stats-color mx-3 button-stats"(click)="onClick8(device)">STATS</button>
+                </div>
+               </span>
+           </mat-card-content>
+         </mat-card>
+
+
+
+       </div>
+
+
+  
+
+ </div>
+ </mat-sidenav-content>
+ </mat-sidenav-container>
+    
+   </body> 
+    

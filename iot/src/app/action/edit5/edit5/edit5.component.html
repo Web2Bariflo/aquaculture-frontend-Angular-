@@ -1,0 +1,31 @@
+<div>
+    <mat-card class="card-width">   
+    
+      
+<div class="d-flex flex-row justify-content-between">
+  <mat-card-header class="device-heading">
+    Edit Device
+  </mat-card-header>
+  <i class="bi bi-file-excel-fill cross mt-2 mx-2" (click)="onClose()"></i>
+</div>
+
+      <hr>
+      <!-- <p class="name-label mx-3 my-1">Device Title</p>
+      <input type="text" class="custom-input custom-input:focus mx-3 p-2" placeholder="Device Title" > -->
+      <p class="name-label mx-3 my-1">Device Name</p>
+      <input [(ngModel)] = "devicename" name="devicename" type="text" class="custom-input custom-input:focus mx-3 p-2" placeholder="Device Name" >
+      <p class="name-label mx-3 my-2">Device Type</p>
+      <select [(ngModel)] ="devicetype"  class="custom-input custom-input:focus mx-3 p-2 drop-width">
+          <option value="" selected disabled>
+              Select Device Type
+          </option>
+          <option *ngFor="let device of devicedetails.results" [value]="device[0]">{{device[0]}}</option>
+          
+      </select>
+      <div class="d-flex flex-row">
+      <button (click)="onEditDevice()" class="btn save-button mx-3 my-3">Update Device</button>
+      <!-- <button class="btn save-button color-change mx-4 my-3" (click)="OnAction()" >CANCEL</button> -->
+      </div>
+      <p class="error mx-3">{{errorMsg}}</p>
+      </mat-card>
+  </div>

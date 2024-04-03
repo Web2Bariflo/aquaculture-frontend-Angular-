@@ -1,0 +1,62 @@
+<mat-card class="mat-Element">
+
+    <mat-dialog-content class="container-width">
+
+        <div class="container-nav">
+
+            <p class="new-User">New User Devices</p>
+
+        </div>
+
+        <div class="form-wrapper" >
+
+            <div class="mobileForm">
+
+               
+<!-- 
+                <div class="name-container">
+
+                    <p class="name-user">Device Types , No.of devices</p>
+
+                    <p class="name-value"><span class="style-span">:</span>{{deviceDetails}}</p>
+
+                </div> -->
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Device Type</th>
+                            <th>No. of devices</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of deviceDetails">
+                            <td>{{item.value}}</td>
+                            <td>{{item.count}}</td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+
+
+                <button class="btn btn-primary mt-4" (click)="onAddDevice()">Add Device</button>
+
+                <div class="button-container-user">
+
+                    <button class="accept-button" (click)="onDevices()">Next</button>
+
+
+
+                </div>
+
+              </div>
+
+              </div>
+
+             
+
+</mat-dialog-content>
+
+</mat-card>

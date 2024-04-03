@@ -1,0 +1,618 @@
+.mat-toolbar{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+body{
+  background-color: rgb(225, 232, 244);
+}
+
+.mat-sidenav-container{
+  height:100%;
+}
+.mat-sidenav, .mat-sidenav-content{
+  padding:16px;
+}
+
+.mat-sidenav{
+  background-color:#ffffff;
+  width:250px;
+}
+.bar1, .bar2, .bar3 {
+  width: 20px;
+  height: 2px;
+  background-color: #9a9c9c;
+  margin: 2px 0;
+  transition: 0.4s;
+}
+
+.name-icon{
+  border-radius: 33px;
+  border-width: 0px;
+  background-color: #a9acb1;
+  height: 40px;
+  width: 40px;
+  color: #41639a;
+  text-align: center;
+  padding: 3px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.username{
+  font-family: "Roboto";
+  font-size: 18px;
+  font-weight: 500;
+  border-width: 0px;
+}
+
+
+.footer{
+  background-color: rgb(239, 246, 249);
+  
+}
+
+
+.copyright{
+  font-size: 14px;
+
+}
+
+.year{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.footer-heading{
+  font-size: 15px;
+
+}
+
+.custom-button{
+  border-radius: 3px;
+  height: 30px;
+  border-width: 0px;
+
+}
+
+.home-button{
+  background-color: transparent;
+  border-width: 0px;
+}
+.top-heading{
+  font-size: 30px;
+}
+
+.check-size{
+  font-size: 25px;
+}
+
+.side-bar{
+  background-color:#80BBF1;
+  position: fixed;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-width: 0px;
+  width: 310px;
+}
+
+.icon-sizing{
+  width: 20px;
+height: 20px;
+  margin-bottom: 2px;
+}
+
+.icon-text{
+  font-size: 19px;
+  font-weight: 500;
+  margin-left:10px;
+  margin-top: 10px;
+}
+.top-space{
+  margin-top: 100px;
+}
+
+.selected-tab {
+background-color: white;
+border-radius: 30px 30px 30px 30px;
+min-width: 100%;
+
+
+}
+
+.table-head{
+  background-color: #80BBF1;
+  color: white;
+text-align: center;
+font-size: 20px;
+}
+
+.error{
+color: red;
+font-size: 15px;
+
+}
+
+/* styles.css */
+
+/* Reset some default styles for the demo */
+/* Reset some default styles */
+.label-style{
+color: #8f9bb3;
+font-weight: 700;
+font-size: 16px;
+}
+
+.input-style{
+border-radius: 3px;
+border-width: 1px;
+border-style: solid;
+background-color: rgb(241, 251, 255) ;
+transition: border-color 0.3s;
+min-width: 400px;
+padding: 10px;
+height: 50px;
+}
+
+.input-style:focus{
+outline: none;
+border-color: rgba(40, 150, 218, 0.989);
+border-width: 1px;
+}
+
+
+.user-form{
+height: 700px;
+min-width:780px;
+border-radius:20px;
+background-color: transparent;
+border-width: 1px;
+border-style: solid;
+margin-top: 80px;
+margin-left: 100px;
+border-color: #a0a0a0;
+margin-right:200px;
+}
+
+.top-bar{
+background-color:  #AFDAFA;
+
+height: 63px;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+padding: 15px;
+
+}
+
+.heading-create{
+font-weight: bold;
+font-size: 28px;
+margin-left: 20px;
+
+}
+
+
+.photo-upload{
+width: 222px;
+height: 225px;
+
+border-radius: 5px;
+border-width: 0px;
+background-color: #FFFEDA;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.photo-details{
+margin-right: 50px;
+margin-top: 80px;
+
+}
+
+.create-button{
+width: 122px;
+height: 46px;
+
+border-radius: 33px;
+background-color: #0040BB;
+color:white;
+margin-bottom: 70px;
+margin-left: 50px;
+}
+
+.inner-image{
+width: 112px;
+height: 114px;
+border-radius: 60px;
+border-width: 1px;
+background-color: white;
+border-color: #818283;
+border-style: solid;
+
+}
+
+.profile-pic{
+width: 75px;
+height: 88px;
+margin-left:18px;
+margin-top:15px;
+border-radius: 18px;
+}
+
+.upload-button{
+height: 35px;
+margin-top: 20px;
+margin-left: 17px;
+border-radius: 16px;
+background-color: #2F88FF;
+
+}
+
+
+.no-users{
+  width: 280px;
+height: 132px;
+border-width: 0px;
+border-radius: 27px;
+box-shadow: 0px 18px 50px 2px #00000040;
+background-color: #C7D6FF;
+margin-left: 50px;
+margin-top:30px;
+box-shadow: 0px 10px 10px 2px #00000040;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.user-heading{
+  font-weight: 500;
+  font-size: 22px;
+
+}
+
+.number{
+  font-weight: bold;
+  font-size:30px;
+  font-style: italic;
+}
+
+.table-design{
+  border-top-left-radius: 20px ;
+  border-top-right-radius: 20px;
+  border-width:1px;
+  border-style:solid;
+
+}
+
+.name-style{
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+}
+
+.change-btn{
+  width: 70px;
+height: 35px;
+color:white;
+border-radius: 18px;
+border-width: 0px;
+text-align: center;
+}
+
+.custom-button{
+  width: 70px;
+  height: 35px;
+  color:white;
+  border-radius: 18px;
+  border-width: 0px;
+  text-align: center;
+
+}
+
+
+.prev{
+  width: 85px;
+}
+
+.dialog-content {
+  height: 500px;
+  width: 700px;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 1px solid #a0a0a0;
+  margin-top: 80px;
+  margin-left: 100px;
+  margin-right: 200px;
+  padding: 20px; /* Add padding to match your styling */
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.accept{
+  border-radius: 20px;
+}
+
+
+
+.user-designation{
+  background-color: #80BBF1;
+  text-align: center;
+  border-radius: 16px;
+
+}
+
+.designation-style{
+  font-size: 23px;
+  font-weight: bold;
+  font-style: italic;
+  color:white;
+}
+
+
+.center-text{
+  text-align: center;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.sm-side{
+  display: none;
+
+ 
+}
+.lg-side{
+  display: block;
+}
+
+.table-margin{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+
+
+  .bar1, .bar2, .bar3 {
+    max-width: 10px;
+    max-height: 1px;
+    background-color: #9a9c9c;
+    margin: 2px 0;
+    transition: 0.4s;
+    
+  }
+
+  .bar-div{
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+  .top-heading{
+    font-size: 20px;
+    margin-top: 0px;
+  }
+
+  .side-bar{
+    width: 55px;
+  }
+
+  .selected-tab {
+    background-color: white;
+    border-radius: 40px;
+    text-align: center;
+    }
+    .icon-sizing{
+      max-width: 16px;
+    max-height: 16px;
+      margin-bottom: 2px;
+    }
+    
+    .icon-text{
+      font-size: 10px;
+      margin-left:2px;
+      margin-top: 2px;
+    }
+
+    
+.no-users{
+  max-width: 140px;
+height: 90px;
+border-width: 0px;
+border-radius: 27px;
+box-shadow: 0px 18px 50px 2px #00000040;
+background-color: #C7D6FF;
+margin-left: 10px;
+margin-top:10px;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+
+}
+
+.user-heading{
+  font-weight: 500;
+  font-size: 10px;
+
+}
+
+.number{
+  font-weight: bold;
+  font-size:13px;
+  font-style: italic;
+}
+
+.designation-style{
+  font-size: 13px;
+ 
+}
+
+.table-design{
+  border-top-left-radius: 20px ;
+  border-top-right-radius: 20px;
+
+}
+.table-head{
+font-size: 10px;
+
+}
+
+.center-text{
+font-size: 10px;
+}
+.name-style{
+  font-size: 10px;
+
+}
+
+
+
+.change-btn{
+  width: 25px;
+height: 13px;
+color:white;
+border-radius: 10px;
+font-size: 7px;
+display: flex;
+padding: 3px;
+justify-content: center;
+}
+
+.sm-side{
+  display: block;
+
+ 
+}
+.lg-side{
+  display: none;
+}
+
+.margin-image{
+  margin-left: 5px;
+}
+
+.table-margin{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.custom-button{
+  width: 25px;
+  height: 17px;
+  color:white;
+  border-radius: 5px;
+  border-width: 0px;
+  display: flex;
+  justify-content: center;
+  padding: 3px;
+  font-size: 8px;
+
+}
+
+
+.prev{
+  width: 35px;
+}
+.page-note{
+  font-size: 7px;
+}
+}
+
+
+.nav-space{
+  margin-top: 70px;
+}
+.new-button{
+  background-color:#2F88FF ;
+  font-weight: bold;
+  border-width: 0px;
+  border-radius: 10px;
+}
+
+.table-head-color{
+  background-color: #80BBF1;
+}
+
+.header{
+  background-color: #80BBF1;
+  text-align: center;
+  color: white;
+}
+
+.cell{
+  text-align: center;
+}
+
+
+.photo-upload{
+width: 222px;
+height: 225px;
+
+border-radius: 5px;
+border-width: 0px;
+background-color: #FFFEDA;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.photo-details{
+margin-right: 50px;
+
+}
+
+.create-button{
+width: 122px;
+height: 46px;
+
+border-radius: 33px;
+background-color: #0040BB;
+color:white;
+margin-bottom: 70px;
+margin-left: 50px;
+}
+
+
+
+.inner-image{
+width: 112px;
+height: 114px;
+border-radius: 60px;
+border-width: 1px;
+background-color: white;
+border-color: #818283;
+border-style: solid;
+
+}
+
+.profile-pic{
+width: 75px;
+height: 88px;
+margin-left:18px;
+margin-top:15px;
+border-radius: 18px;
+}
+
+.upload-button{
+height: 35px;
+margin-top: 20px;
+border-radius: 16px;
+background-color: #2F88FF;
+width: 120px;
+}
+
+.image-buttons{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+#fileInput{
+  background-color: chartreuse;
+}
+
+
+.ocr-center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

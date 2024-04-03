@@ -1,0 +1,333 @@
+<body class="main-container">
+  <mat-toolbar class="mb-0 d-flex flex-row justify-content-between fixed-top" >
+    <div class="d-flex flex-row">
+      <div class="d-flex flex-column justify-content-center" (click)="opened=!opened">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <div class="d-flex flex-row">
+      
+        <!-- <button class="home-button"><h1 class="mb-0 mt-2 top-heading">Bariflo Labs</h1></button> -->
+    </div>
+    </div>
+      <div class="d-flex flex-row">
+        <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}
+
+        </button>
+        <mat-menu #menu="matMenu">
+   
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+
+      </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="nav-space">
+    <mat-sidenav mode="side" class="side-bar" [(opened)]="opened">
+      <mat-nav-list class="top-space">
+      
+        <mat-list-item class="mt-3 ">
+          <a mat-list-item href="general-dashboard">
+            <img src="./assets/img/grid.png" class="icon-sizing">
+            <span class="icon-text">Dashboard</span>
+          </a>
+        </mat-list-item>
+    
+        <!-- <mat-list-item class="mt-3 ">
+          <a mat-list-item href="general-user-create">
+            <img src="./assets/img/diagram-3.png" class="icon-sizing">
+            <span class="icon-text">Devices</span>
+          </a>
+        </mat-list-item>
+     -->
+
+     <mat-list-item class="mt-3 ">
+      <a mat-list-item href="ocr-code">
+        <!-- <img src="./assets/img/Vector.png" class="icon-sizing"> -->
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span class="icon-text">OCR</span>
+      </a>
+    </mat-list-item>
+
+        <mat-list-item class="mt-3 selected-tab">
+          <a mat-list-item href="profile-page">
+            <img src="./assets/img/person.png" class="icon-sizing">
+            <span class="icon-text">User Profile</span>
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="main-container">
+
+      <div class="container-row-profile">
+  
+      <div class="profile-image-container">
+  
+     
+  
+          <div *ngIf="selectedImage" class="Image-pic">
+  
+              <img [src]="selectedImage" alt="Uploaded Image" class="image-profile-upload"/>
+  
+            </div>
+  
+            <p class="user-name">Graphix</p>
+
+            <form (submit)="uploadImage($event)">
+  
+          <input type="file" (change)="onFileSelectedProfile($event)" #fileInputProfile style="display: none;" />
+  
+          <button (click)="fileInputProfile.click()" class="upload">Upload</button>
+  
+            </form>
+  
+   
+  
+   
+  
+      </div>
+  
+      <div class="profile-container">
+  
+          <div class="profilenav">
+  
+              <p class="profile-details-name">Profile Details</p>
+  
+          </div>
+  
+          <div class="container-input-label">
+  
+              <div class="container-input">
+  
+                  <label class="name-label">Mobile Number</label>
+  
+                  <input type="number" [(ngModel)]="profileDetails.mobileno" readonly class="input-Element"/>
+  
+              </div>
+  
+              <div class="container-input">
+  
+                  <label class="name-label">Personal email</label>
+  
+                  <input type="text" [(ngModel)]="profileDetails.email" readonly  class="input-Element" />
+  
+              </div>
+  
+              <div class="container-input">
+  
+                  <label class="name-label">Address</label>
+  
+                  <input type="text" [(ngModel)]="profileDetails.address"  class="input-Element"/>
+  
+              </div>
+  
+              <div class="aadhaarnumber-check">
+  
+              <div class="container-input">
+  
+                  <label class="name-label">Aadhaar Number</label>
+  
+                  <input type="number"    [(ngModel)]="profileDetails.aadharNumber"
+  
+                  name="aadharNumber"   class="input-Element"/>
+  
+              </div>
+  
+              <button *ngIf="!isAadharValid" (click)="verifyAadhar()" class="verifyaadhaar">Verify</button>
+  
+              <button *ngIf="isAadharValid === true" class="verifiedaadhaar"><img src='./assets/img/patch-bg.png'/></button>
+  
+              <button *ngIf="isAadharValid === false" class="rejected-aadhar" >Rejected<img src='./assets/img/patch-exclamation.png' alt="Bariflo" class="image-rejected"/></button>
+  
+   
+  
+          </div>
+  
+   
+  
+              <div *ngIf="isAadharValid !== null">
+  
+                  <p class="invalid-Erorr">{{ isAadharValid ? '' : 'Please put a valid Aadhaar Number' }}
+  
+                  </p>
+  
+              </div>
+  
+   
+<!--   
+              <div class="aadhaarnumber-check">
+  
+   
+  
+              <div class="container-input">
+  
+                  <label class="name-label">PAN Number</label>
+  
+             
+  
+                  <input type="text"  class="input-Element" [(ngModel)]="profileDetails.pan" />
+  
+              </div>
+  
+                  <button *ngIf="!isPanValid" (click)="verifyPan()" class="verifyaadhaar">Verify</button>
+  
+                  <button *ngIf="isPanValid === true" class="verifiedaadhaar"><img src='./assets/img/patch-bg.png'/></button>
+  
+                  <button *ngIf="isPanValid === false" class="rejected-aadhar" >Rejected<img src='./assets/img/patch-exclamation.png' alt="Bariflo" class="image-rejected"/></button>
+  
+   
+  
+         
+  
+   
+  
+           </div>
+  
+           <div *ngIf="isPanValid !== null">
+  
+              <p class="invalid-Erorr">{{ isPanValid ? '' : 'Please put a valid Pan Number' }}
+  
+              </p>
+  
+          </div> -->
+  
+          </div>
+  
+     
+  
+         
+  
+      </div>
+  
+   
+  
+      <div class="container-document">
+  
+          <div class="profilenav">
+  
+       <p class="details-name">Documents</p>
+  
+          </div>
+  
+          <div class="name-documents">
+  
+              <p class="name-verify">
+  
+              We need to verify your information. Please sumbit the documents
+  
+              below to process your application
+  
+              </p>
+  
+              <p class="name-upload">Upload Documents (Electricity Bill.Land documents,etc)</p>
+  
+              <div class="container-upload" *ngIf="uploadedFiles.length === 0">
+  
+                  <img src="./assets/img/drop.png"  alt='Bariflo'   />      
+  
+                  <p class="name-drag">Drag and Drop here<br/><span class="span-or">or</span>
+  
+                  </p>
+  
+                  <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none;" />
+  
+                  <button (click)="fileInput.click()" class="browse-file">Browse Files</button>
+  
+                  <div class="pdf-list">
+  
+               
+  
+                    <div *ngIf="uploadedFiles.length !== 0" class="button-addInput">
+  
+                      <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none;" />
+  
+                      <button (click)="fileInput.click()" class="browse-add">Add +</button>
+  
+                    </div>
+  
+                  </div>
+  
+              </div>
+  
+              <div class="pdf-list">
+  
+                  <div *ngFor="let file of uploadedFiles;let i = index " class="pdf-item">
+  
+             
+  
+                      <img [src]="file.iconUrl" alt="File Icon" class="file-icon" *ngIf="isImage(file.name)" (click)="openFile(file)" />
+  
+                      <button class="filename" (click)="openFile(file)">{{ file.name }}</button>
+  
+                      <button class="deletebutton" (click)="deletefile(i)">  <i class="fa-solid fa-trash deleteicon" ></i></button>
+  
+                   
+  
+                    </div>
+  
+   
+  
+              <div *ngIf="uploadedFiles.length !== 0" class="button-addInput">
+  
+                  <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none;" />
+  
+                  <button (click)="fileInput.click()" class="browse-add">Add +</button>
+  
+                </div>
+  
+              </div>  
+  
+              <button (click)="submit()" class="submitbutton">Submit</button>    
+  
+          </div>
+  
+           </div>
+  
+   
+  
+    <!-- <form (ngSubmit)="onSubmit()" #fileUploadForm="ngForm">
+      <input type="file" multiple (change)="onFileSelected($event)" #fileInput style="display: none;" />
+      <button (click)="fileInput.click()" class="browse-file">Browse Files</button>
+      <button type="submit">Upload Files</button>
+    </form>
+     -->
+    
+
+
+
+
+  </div>
+  
+  <div class="exit-container">
+  
+      <button class="exit" (click)="onDashboard()">Exit</button>
+  
+  </div>
+  
+   
+  
+   
+  
+   
+  
+  </div>
+
+
+
+    
+  <nav class="navbar fixed-bottom footer">
+    <div class="container-fluid d-flex flex-row justify-content-end">
+     
+      <img src="./assets/img/Asset1.png" class="justify-content-center align-items-center mx-2" style="width: 35px; height: 40px;">
+    </div>
+  </nav>
+
+
+           
+       </mat-sidenav-container>
+    
+   
+   </body>
+  

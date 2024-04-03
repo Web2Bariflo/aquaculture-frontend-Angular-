@@ -1,0 +1,240 @@
+
+
+  
+
+  <body class="main-container">
+    <mat-toolbar class="mb-0 d-flex flex-row justify-content-between fixed-top" >
+      <div class="d-flex flex-row">
+        <div class="d-flex flex-column justify-content-center bar-div" (click)="opened=!opened">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+        <div class="d-flex flex-row">
+        <!-- <h1 class="mb-0 mt-2 mx-1 top-heading">Bariflo Labs</h1> -->
+      </div>
+      </div>
+      <div class="d-flex flex-row">
+        <button class="name-icon mx-3" [matMenuTriggerFor]="menu">{{(userNameProfile | uppercase).split(' ')[0][0]+(userNameProfile| uppercase).split(' ')[1][0]}}
+
+        </button>
+        <mat-menu #menu="matMenu">
+   
+          <button mat-menu-item (click)="onLogout()">Logout</button>
+        </mat-menu>
+
+      </div>
+    </mat-toolbar>
+
+
+     
+    <mat-sidenav-container class="nav-space" >
+        <mat-sidenav mode="side" class="side-bar" [(opened)]="opened">
+            <mat-nav-list class="top-space">
+            
+           
+
+                    
+         <div class="lg-side">
+            <mat-list-item class="mt-3 ">
+             <a mat-list-item href="users-check">
+               <img src="./assets/img/Vector.png" class="icon-sizing">
+               <span class="icon-text">User Notifications</span>
+             </a>
+           </mat-list-item>
+       
+           <mat-list-item class="mt-3">
+             <a mat-list-item href="general-user-create">
+               <img src="./assets/img/person-add.png" class="icon-sizing">
+               <span class="icon-text">Created Users</span>
+             </a>
+           </mat-list-item>
+       
+           <mat-list-item class="mt-3">
+             <a mat-list-item href="admin-device-types">
+               <img src="./assets/img/diagram-3.png" class="icon-sizing">
+               <span class="icon-text">Device Type Create</span>
+             </a>
+           </mat-list-item>
+ 
+           <mat-list-item class="mt-3 selected-tab">
+             <a mat-list-item href="admin-ocr">
+     
+               <i class="fa-solid fa-magnifying-glass"></i>
+               <span class="icon-text">OCR</span>
+             </a>
+           </mat-list-item>
+ 
+           <mat-list-item class="mt-3 ">
+             <a mat-list-item href="thermal">
+               <!-- <img src="./assets/img/Vector.png" class="icon-sizing"> -->
+               <i class="fa-solid fa-panorama"></i>
+               <span class="icon-text">Thermal</span>
+             </a>
+           </mat-list-item>
+       
+          </div>
+              <!-- <mat-list-item class="mt-3 selected-tab">
+                <a mat-list-item href="general-user-create">
+                  <img src="./assets/img/person-add.png" class="icon-sizing">
+                  <span class="icon-text">Create User</span>
+                </a>
+              </mat-list-item>
+          
+              <mat-list-item class="mt-3">
+                <a mat-list-item href="admin-device-types">
+                  <img src="./assets/img/diagram-3.png" class="icon-sizing">
+                  <span class="icon-text">Device Type Create</span>
+                </a>
+              </mat-list-item> -->
+
+
+
+              <div class="sm-side">
+                <div class="mt-3">
+                  <a href="users-check">
+                    <img src="./assets/img/Vector.png" class="icon-sizing">
+                  
+                  </a>
+                </div>
+            
+                <div class="mt-3">
+                  <a  href="general-user-create">
+                    <img src="./assets/img/person-add.png" class="icon-sizing">
+                
+                  </a>
+                </div>
+            
+                <div class="mt-3">
+                  <a  href="admin-device-types">
+                    <img src="./assets/img/diagram-3.png" class="icon-sizing">
+        
+                  </a>
+                </div>
+
+                
+           <div class="mt-3 selected-tab">
+            <a  href="admin-ocr">
+    
+              <i class="fa-solid fa-magnifying-glass"></i>
+          
+            </a>
+          </div>
+
+
+              </div>
+
+            </mat-nav-list>
+          </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="user-designation">
+                <h1 class="designation-style">Logged in as Aqua Admin</h1>
+        
+              </div>
+        
+              <div class="my-5 table-margin">
+                <div class="table-responsive text-nowrap table-size table-design">
+                <table class="table table-bordered table-striped table-hover table-design">
+                   <thead>
+                      <tr class="">
+                        <th class="table-head">Sl.No</th>
+                        <th class="table-head">Name</th>
+                        <th class="table-head">Mobile No</th>
+                        <th class="table-head">Image Name</th>
+                        <th class="table-head">Action</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <!-- *ngIf="item[2] === 'admin'" -->
+                      <!-- *ngFor="let item of getCurrentPageData(); let i = index" -->
+                 
+                      <!-- <img [src]="imageElement" class="justify-content-center align-items-center mx-2" style="width: 35px; height: 40px;">                  -->
+                      <ng-container  > 
+                          <tr *ngFor="let item of ocrUsers; let i = index" >
+                            <td class="name-style">
+                              {{i+1}}
+                            </td>
+                            <td class="name-style">
+                              {{item[1]}}
+                            </td>
+                            <td class="name-style">
+                              {{item[2]}}
+                            </td>
+                            <td class="name-style">
+                              {{item[0]}}
+                            </td>
+                            <td class="text-center">
+                              <button class="btn btn-primary mx-1 change-btn" (click)="onCheck(item)">View</button>
+                              <!-- <button (click)="onDeleteUser(item[1])" class="btn btn-danger change-btn mx-1">Delete</button> -->
+                            </td>
+                          </tr>
+                 
+                        </ng-container>
+                        <!-- <ng-template #noDataMessage>
+                          <tr>
+                              <td class="center-text" colspan="5">No Requested users are available!</td>
+                          </tr>
+                      </ng-template> -->
+                
+                   </tbody>
+                  
+                
+                </table>
+                
+                </div>
+              </div>
+          
+
+
+
+
+<!-- <div class="my-5 table-margin">
+  <div class="table-responsive text-nowrap my-3 table-design">
+  <table class="table table-bordered table-striped table-hover table-design">
+    <thead> -->
+    <!-- <tr *ngIf="transponseList">
+      <th *ngFor="let header of transponseList[0]" class="header">{{ header }}</th>
+    </tr> -->
+  <!-- </thead>
+    <tbody *ngIf="transponseList">
+    <ng-container *ngFor="let row of transponseList">
+      <tr >
+        <td *ngFor="let cell of row" class="cell">{{ cell }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+  
+  </table>
+  
+  </div>
+</div> -->
+
+<div class="my-5 table-margin"  *ngIf="translateData">
+  <div class="table-responsive text-nowrap my-3 table-design">
+  <table class="table table-bordered table-striped table-hover table-design">
+    <thead>
+    <!-- <tr *ngIf="transponseList">
+      <th *ngFor="let header of transponseList[0]" class="header">{{ header }}</th>
+    </tr> -->
+  </thead>
+    <tbody *ngIf="translateData">
+    <ng-container *ngFor="let row of translateData">
+      <tr >
+        <td *ngFor="let cell of row" class="cell">{{ cell }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+  
+  </table>
+  
+  </div>
+</div>
+
+            
+          </mat-sidenav-content>
+   
+       </mat-sidenav-container>
+       
+   
+
+   </body>

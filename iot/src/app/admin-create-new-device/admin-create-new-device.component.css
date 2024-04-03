@@ -1,0 +1,94 @@
+.card-width{
+    width: 400px;
+  }
+
+  .device-heading{
+    font-weight: 500;
+    margin: 0px;
+  }
+  
+.cross{
+  color: red;
+  font-size: 30px;
+  
+}
+
+  .no-new{
+    height: 40px;
+  }
+
+  .name-label{
+    font-weight: bold;
+    color: #4c4c4d;
+    font-size: 15px;
+    margin-top:5px;
+  }
+
+  .drop-down{
+    height: 50px;
+    border-radius: 6px;
+    width: 140px;
+    background-color:#f8f9fa;;
+    border-width: 0px;
+    border-color: rgb(182, 182, 182);
+    border-style: solid;
+    color: #a9acb1;
+  }
+
+  .save-button{
+    background-color: #20c997;
+    border-radius: 3px;
+    color: white;
+    width: 80px;
+    height: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    
+}
+
+.custom-input{
+    border: 2px solid rgb(204, 206, 210); /* Default border color */
+    transition: border-color 0.3s;
+    border-radius: 2px;
+    background-color:  #D9D9D9; 
+    border-width: 1px;
+}
+
+.custom-input:focus{
+    border-color: rgba(40, 150, 218, 0.989); /* Border color when focused */
+    outline: none; 
+    border-width: 1px; 
+}
+
+.drop-width{
+    width: 200px;
+}
+
+.color-change{
+  background-color: #ffc107;
+}
+
+
+.check-size{
+    height: 15px;
+    width: 15px;
+    margin-left:14px;
+    margin-right: 7px ;
+}
+
+.submit-button{
+    border-radius: 30px;
+    border-color: #babcbe;
+    border-width: 0px;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    width: 90px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .custom-input{
+    width: 200px;
+  }
+}

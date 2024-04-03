@@ -1,0 +1,109 @@
+.mat-toolbar{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+body{
+    background-color: rgb(225, 232, 244);
+}
+
+  .mat-sidenav-container{
+    height:100%;
+  }
+  .mat-sidenav, .mat-sidenav-content{
+    padding:16px;
+  }
+
+  .mat-sidenav{
+    background-color:#ffffff;
+    width:250px;
+  }
+  .bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 2px 0;
+    transition: 0.4s;
+  }
+
+  .name-icon{
+    border-radius: 33px;
+    border-width: 0px;
+    background-color: #a9acb1;
+    height: 40px;
+    width: 40px;
+    color: #41639a;
+    text-align: center;
+    padding: 3px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .username{
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 500;
+    border-width: 0px;
+  }
+
+
+  .footer{
+    background-color: rgb(239, 246, 249);
+    bottom: 0;
+    position: sticky;
+    height: 50px;
+    
+  }
+  
+  
+  .copyright{
+    font-size: 14px;
+  
+  }
+  
+  .year{
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .footer-heading{
+    font-size: 15px;
+  
+  }
+
+  .card-width{
+    width: 400px;
+  }
+
+  .device-heading{
+    font-weight: 500;
+    margin: 0px;
+  }
+
+  .no-new{
+    height: 40px;
+  }
+
+  .name-label{
+    font-weight: bold;
+    color: #babcbe;
+    font-size: 12px;
+  }
+
+  .drop-down{
+    height: 50px;
+    border-radius: 6px;
+    width: 140px;
+    background-color:#f8f9fa;;
+    border-width: 0px;
+    border-color: rgb(182, 182, 182);
+    border-style: solid;
+    color: #a9acb1;
+  }
+
+  .save-button{
+    background-color: #20c997;
+    border-radius: 3px;
+    color: white;
+    width: 80px;
+    height: 35px;
+    
+}

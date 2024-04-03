@@ -1,0 +1,219 @@
+<!-- 
+<h2 mat-dialog-title>Line Graph</h2>
+<hr/>
+<mat-dialog-content>
+          <table class="table table-bordered table-striped table-hover">
+             <tbody>
+                 <tr>
+                     <td class="display-name">
+                      Display Name
+                       
+                     </td>
+                    
+                     <td>
+                      <input type="text" [(ngModel)]="graph_dis_name" class="p-2 color color:focus" value="Line Graph" >
+                       
+                     </td>
+                    
+                     
+                 </tr>
+                 <tr>
+                  <td class="display-name">
+                   X-axis Label Name
+                    
+                  </td>
+                 
+                  <td>
+                   <input type="text" [(ngModel)]="graph_x" class="p-2 color color:focus" value="Line x" >
+                    
+                  </td>
+                 
+                  
+              </tr>
+              <tr>
+                <td class="display-name">
+                 Y-axis Label Name
+                  
+                </td>
+               
+                <td>
+                 <input type="text" [(ngModel)]="graph_y" class="p-2 color color:focus" value="Line y" >
+                  
+                </td>
+               
+                
+            </tr>
+                 <tr>
+                  <td class="headings">
+                    Label
+                    
+                  </td>
+                 
+                  <td class="headings">
+                    Color
+                    
+                  </td>
+                
+              </tr>
+              <tr >
+                <td>
+                  <select  class="p-2 back-color1"  [(ngModel)]="graph_label">
+                    <option  value="" selected style="display: none;">Select Label Name</option>
+                    <option value="orp">ORP</option>
+                    <option value="temperature">Temperature</option>
+                    <option value="voltage">Voltage</option>
+                    <option value="current">Current</option>
+                    <option value="do">DO</option>
+                    <option value="ph">Ph</option>
+                    <option value="x">X</option>
+                    <option value="y">Y</option>
+                  </select>
+                </td>
+               
+                <td>
+                    <select  class="p-2 back-color1"  [(ngModel)]="graph_color">
+                      <option  value="" selected style="display: none;">Select Value</option>
+                      <option value="red">Red</option>
+                      <option value="blue">Blue</option>
+                      <option value="green">Green</option>
+                      <option value="Black">Black</option>
+                      <option value="pink">Pink</option>
+                      <option value="violet">Violet</option>
+                      <option value="Indigo">Indigo</option>
+                      <option value="orange">Orange</option>
+                    </select>
+                </td>
+               
+            </tr>
+            
+          
+        <tr class="row-height">
+          <td colspan="2">
+           <input type="checkbox" [(ngModel)]="graph_allow_user" class="checkbox-height" id="allowuser">    
+           <label class="mx-2 allow" for ="allowuser">Allow User Access</label>        
+          </td>
+       
+      </tr>
+
+
+        </tbody>
+
+          </table>
+     <div>
+      <p class="errormsg">{{errorPop}}</p>
+      <p class="errormsg">{{errorMsg}}</p>
+     </div>     
+    <button  class="btn custom-button btn-success" (click)="onLineGraph()">ADD</button>
+
+</mat-dialog-content>
+<mat-dialog-actions> -->
+ <!-- <button mat-button mat-dialog-close>Close</button>-->
+  <!-- You can also add additional buttons here</mat-dialog-actions> -->
+
+
+
+
+
+  <h2 mat-dialog-title>Line Graph</h2>
+  <hr/>
+  <mat-dialog-content>
+            <table class="table table-bordered table-striped table-hover">
+               <tbody>
+                   <tr>
+                       <td class="display-name">
+                        Display Name
+                         
+                       </td>
+                      
+                       <td colspan="2">
+                        <input type="text" [(ngModel)]="graph_dis_name" class="p-2 color color:focus" value="Line Graph" >
+                         
+                       </td>
+                  
+                       
+                   </tr>
+                   <tr>
+                    <td class="display-name">
+                     X-axis Label Name
+                      
+                    </td>
+                   
+                    <td colspan="2">
+                     <input type="text" [(ngModel)]="graph_x" class="p-2 color color:focus" value="Line x" >
+                      
+                    </td>
+                   
+                    
+                </tr>
+                <tr>
+                  <td class="display-name">
+                   Y-axis Label Name
+                    
+                  </td>
+                 
+                  <td colspan="2">
+                   <input type="text" [(ngModel)]="graph_y" class="p-2 color color:focus" value="Line y" >
+                    
+                  </td>
+                 
+                  
+              </tr>
+                   <tr>
+                    <td class="headings">
+                      Label
+                      
+                    </td>
+                   
+                    <td class="headings">
+                      Color
+                      
+                    </td>
+                    <td class="headings">
+                      Action
+                    </td>
+                </tr>
+                <tr *ngFor ="let items of selectedOptions; index as i " >
+                  <td>
+                
+                    <input type="text" [(ngModel)]="items.graph_label" class="p-2 color color:focus" value="graph_label" >
+             
+                  </td>
+                 
+                  <td>
+                      
+                    <input type="text" [(ngModel)]="items.graph_color" class="p-2 color color:focus" value="graph_color" >
+                  </td>
+                  <td>
+                    <button class="btn custom-button delete" (click)="removeOption(i)"><i class="bi bi-trash"></i></button>
+                  </td>
+              </tr>
+              
+            
+          <tr class="row-height">
+            <td colspan="3">
+             <input type="checkbox" [(ngModel)]="graph_allow_user" class="checkbox-height" id="allowuser">    
+             <label class="mx-2" for ="allowuser">Allow User Access</label>        
+            </td>
+            
+        </tr>
+        <tr>
+          <td colspan="3">
+           <button class="btn custom-button " (click)="addOption()">ADD</button>
+          </td>        
+      </tr>
+  
+          </tbody>
+  
+            </table>
+      <button  class="btn custom-button"    (click)="onLineGraph()">Submit</button>
+  
+  </mat-dialog-content>
+  <mat-dialog-actions>
+   <!-- <button mat-button mat-dialog-close>Close</button>-->
+    <!-- You can also add additional buttons here --></mat-dialog-actions>
+
+
+
+
+
+

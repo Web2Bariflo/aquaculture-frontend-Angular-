@@ -1,0 +1,18 @@
+
+.name-icon{
+    border-radius: 33px;
+    border-width: 0px;
+    background-color: #a9acb1;
+    height: 40px;
+    width: 40px;
+    color: #41639a;
+    text-align: center;
+    padding: 3px;
+  }
+
+  .username{
+    font-family: "Roboto";
+    font-size: 18px;
+
+  }
+

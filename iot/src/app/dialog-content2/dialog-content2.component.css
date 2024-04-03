@@ -1,0 +1,52 @@
+.back-color{
+    background-color: rgb(247, 253, 255);
+    border-radius: 2px;
+    border-color: rgb(136, 153, 177);
+    border-width: 1px;
+  }
+
+  .back-color1{
+    background-color: rgb(220, 233, 237);
+    border-radius: 2px;
+    border-color: rgb(228, 235, 246);
+    border:none;
+  }
+
+  .row-height{
+    height: 50px;
+  }
+
+
+  .custom-button{
+    background-color: rgb(112, 195, 112);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    border-width: 0px;
+}
+
+.checkbox-height{
+    height: 15px;
+    width: 15px;
+}
+
+.disable{
+    background-color: aliceblue;
+    color: rgb(161, 164, 164);
+}
+
+
+  
+
+.color{
+    border: 2px solid rgb(204, 206, 210); /* Default border color */
+    transition: border-color 0.3s;
+    border-radius: 2px;
+    background-color: rgb(247, 253, 255);
+  }
+
+  .color:focus{
+    border-color: rgba(40, 150, 218, 0.989); /* Border color when focused */
+    outline: none; 
+  }
+  

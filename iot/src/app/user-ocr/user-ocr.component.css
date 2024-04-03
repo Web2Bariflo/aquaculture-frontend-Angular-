@@ -1,0 +1,73 @@
+ 
+.photo-upload{
+    width: 222px;
+    height: 225px;
+    
+    border-radius: 5px;
+    border-width: 0px;
+    background-color: #FFFEDA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+    
+    .photo-details{
+    margin-right: 50px;
+    
+    }
+  .inner-image{
+    width: 112px;
+    height: 114px;
+    border-radius: 60px;
+    border-width: 1px;
+    background-color: white;
+    border-color: #818283;
+    border-style: solid;
+    
+    }
+  .upload-button{
+    height: 35px;
+    margin-top: 20px;
+    border-radius: 16px;
+    background-color: #2F88FF;
+    width: 120px;
+    }
+    #fileInput{
+      background-color: chartreuse;
+    }
+   .ocr-center{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      margin-left: 35px;
+    }
+
+      
+  .profile-pic{
+    width: 75px;
+    height: 88px;
+    margin-left:18px;
+    margin-top:15px;
+    border-radius: 18px;
+    }
+
+    .title{
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .flexing{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .cross{
+        font-size: 20px;
+        margin-top:10px;
+        margin-right: 10px;
+    }

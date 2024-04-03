@@ -1,0 +1,194 @@
+ 
+
+.container-nav{
+
+    background-color:#AFDAFA;
+
+    padding-top: 5px;
+
+    height: 35px;
+     
+ 
+
+    }
+
+ 
+
+.mobileForm{
+
+    background-color: white;
+
+    margin-left:30px;
+
+    margin-top:20px;
+
+ 
+
+ 
+
+ 
+
+ 
+
+}
+
+ 
+
+.container-width{
+
+    margin:0px;
+
+    padding:0px;
+
+}
+
+ 
+
+.mat-Element{
+    padding:0px;
+
+    /* height:450px; */
+    border-radius: 10px;
+    
+
+}
+
+ 
+
+ 
+
+ 
+
+.name-container{
+
+    display:flex;
+
+}
+
+ 
+
+.new-User{
+
+    font-weight:500;
+
+    color:#000000;
+
+    margin-left:20px;
+
+}
+
+ 
+
+.name-user{
+
+    font-weight: 500;
+
+    color:#000000;
+
+    font-size: 12px;
+
+    width:100px;
+
+   
+
+ 
+
+}
+
+ 
+
+ 
+
+.style-span{
+
+    font-weight: 500;
+
+    color:#000000;
+
+    font-size: 12px;
+
+    margin-right: 10px;
+
+}
+
+ 
+
+ 
+
+.accept-button{
+
+   background-color: #00A31A;
+
+   border-radius: 5px;;
+
+   border:none;
+
+   color:#ffffff;
+
+ 
+
+}
+
+ 
+
+ 
+
+.reject-button{
+
+    background-color: #DE0C0C;
+
+    border-radius: 5px;;
+
+    border:none;
+
+    color:#ffffff;
+
+    margin-left: 10px;
+
+ 
+
+}
+
+ 
+
+ 
+
+.button-container-user{
+
+    display:flex;
+
+    justify-content: flex-end;
+
+    align-items: flex-end;
+
+    height:190px;
+
+    margin-right:20px;
+    margin-top: 40px;
+ 
+
+}
+
+ 
+
+.name-value{
+
+    font-size:14px;
+
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    border: 1px solid #ccc; /* Add a border to the table */
+  }
+  
+  th, td {
+    border: 1px solid #ccc; /* Add borders to table headers and data cells */
+    padding: 8px; /* Add padding to the cells */
+  }
+  
+  th {
+    background-color: #f2f2f2; /* Add a background color to table headers */
+  }
+  

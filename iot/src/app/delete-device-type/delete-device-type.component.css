@@ -1,0 +1,55 @@
+
+
+  
+  .form-wrapper{
+  
+    background-color: rgba(0,0,0,0.5);
+}
+
+.mobileForm{
+    background-color: white;
+  
+
+}
+
+.delete-account{
+  padding-bottom:10px;
+  font-size:15px;
+  font-family: "Roboto";
+  color:#222b45;
+  font-weight: 500;
+}
+
+.delete-confirm{
+  font-size: 13px;
+
+}
+
+.yes-buttton-delete{
+  background-color: #00d68f;
+  border-color: #00d68f;
+  border:none;
+  color: #fff;
+  height:36px;
+  width:60px;
+  border-radius: 5px;;
+  margin-right:15px;
+  font-size: 14px;;
+}
+
+
+.No-buttton-delete{
+  background-color: #fa0;
+  border-color: #fa0;
+  color: #fff;
+  height:36px;
+  width:60px;
+  border-radius: 5px;;
+  font-size: 14px;;
+  border:none;
+
+}
+
+.delete-confirm-account{
+  margin-top:30px;
+} 

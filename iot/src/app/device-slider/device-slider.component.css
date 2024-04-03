@@ -1,0 +1,46 @@
+
+.column-heading{
+    font-weight: 400;
+}
+.border-color{
+    border-color: rgb(96, 96, 244);
+    
+}
+
+.row-color{
+    background-color: rgb(216, 221, 226);
+}
+
+
+  
+  
+
+  .color{
+    border: 2px solid rgb(204, 206, 210); /* Default border color */
+    transition: border-color 0.3s;
+    border-radius: 2px;
+    background-color: rgb(247, 253, 255);
+  }
+
+  .color:focus{
+    border-color: rgba(40, 150, 218, 0.989); /* Border color when focused */
+    outline: none; 
+  }
+  
+
+.custom-button{
+    background-color: rgb(112, 195, 112);
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    border-width: 0px;
+}
+
+.row-height{
+    height: 50px;
+}
+
+.check-size{
+    height: 15px;
+    width: 15px;
+}

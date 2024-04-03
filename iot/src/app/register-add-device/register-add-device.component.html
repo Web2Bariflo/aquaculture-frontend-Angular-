@@ -1,0 +1,76 @@
+<!-- <div class="d-flex flex-col">
+    <div class="card-width"> -->
+<!-- <div class="d-flex flex-row justify-content-between">
+            <mat-card-title class="mx-3 my-2">New Device</mat-card-title>
+            <i class="bi bi-file-excel-fill cross mt-2 mx-2" (click)="onClose()"></i>
+        </div> -->
+<!-- <hr> -->
+<!-- <p class="name-label mx-3 my-1">Device Name</p>
+        <input [(ngModel)]="devicename" name="devicename" type="text" class="custom-input custom-input:focus mx-3 p-2"
+            placeholder="Device Name"> -->
+<!-- <p class="name-label mx-3 my-2">Device Type</p>
+        <div class="d-flex flex-row">
+            <select [(ngModel)]="selectdevice" class="custom-input custom-input:focus mx-3 p-2 drop-width">
+                <option value="" selected disabled>Select Device Type</option>
+                <option *ngFor="let device of devicedetails.results" [value]="device[0]">{{device[0]}}</option>
+            </select>
+            <button class="btn save-button mx-4 my-3" (click)="openDeviceMap()">Add Location</button>
+        </div>
+        <div class="d-flex flex-row">
+            <button (click)="onAddDevice()" class="btn save-button mx-3 my-3">Add Device</button>
+        </div> -->
+<!-- <p class="error mx-3">{{errorMsg}}</p>
+    </div> -->
+<!-- Map container -->
+<!-- <div *ngIf="openMap" class="d-flex map-container bg-white">
+        <google-map height="400px" width="650px">
+            <div>
+                <map-marker></map-marker>
+            </div>
+        </google-map>
+    </div>
+</div> -->
+<div class="card">
+    <div class="card-head">
+        <div class="d-flex flex-row justify-content-between">
+            <mat-card-title class="mx-3 my-2">Device List</mat-card-title>
+            <i class="bi bi-file-excel-fill cross mt-2 mx-2" (click)="onClose()"></i>
+
+        </div>
+        <div class="card-body p-4">
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <div class="form-group">
+                    <label class="form-group" for="devicename">
+                        Device Name
+                    </label>
+                    <input [(ngModel)]="devicename" class="form-control" id="devicename" type="text"
+                        placeholder="Device Name" name="devicename">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="device" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Device
+                        List</label>
+                        <select [(ngModel)]="selectdevice" name="selectdevice" class="custom-input custom-input:focus mx-3 p-2 drop-width" (change)="onDeviceTypeChange($event)">
+                            <!-- <option value="" selected disabled>Select Device Type</option> -->
+                            <option *ngFor="let device of devicedetails.results" [value]="device[0]">{{device[0]}}</option>
+                        </select>
+                </div>
+                <button (click)="openDeviceMap()" type="button" class="btn btn-primary mb-4">Add Device
+                    Location</button>
+                <div class="d-flex flex-row">
+                    <button (click)="onAddDevice()" type="button" class="btn btn-primary">Add Device</button>
+
+                </div>
+                <p class="error mx-3">{{errorMsg}}</p>
+            </form>
+        </div>
+        <div *ngIf="openMap" class=" mb-2 map-container bg-white p-4">
+            <div class="d-flex gap-2">
+                <input type="text" class="mb-2" placeholder="Enter City Name" [(ngModel)]="city">
+                <button type="button" class="btn btn-primary"  (click)="searchByCity()">Search</button>
+            </div>
+            <!-- <div id="map" style="height: 400px; width: 100%;"></div> -->
+            <google-map height="400px" width="650px" [center]="location" [zoom]="zoomin" (mapClick)="onMapClick($event)">
+                <map-marker *ngIf="marklocation" [position]="marklocation"></map-marker>
+            </google-map>
+        </div>
+    </div>
