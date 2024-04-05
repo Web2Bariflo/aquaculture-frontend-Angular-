@@ -46,13 +46,22 @@
                     <input [(ngModel)]="devicename" class="form-control" id="devicename" type="text"
                         placeholder="Device Name" name="devicename">
                 </div>
-                <div class="form-group mb-4">
-                    <label for="device" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Device
-                        List</label>
-                        <select [(ngModel)]="selectdevice" name="selectdevice" class="custom-input custom-input:focus mx-3 p-2 drop-width" (change)="onDeviceTypeChange($event)">
-                            <!-- <option value="" selected disabled>Select Device Type</option> -->
+                <div class="form-group mb-4 d-flex mt-4">
+                    <div>
+                        <label for="device" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Device
+                            List</label>
+                        <select [(ngModel)]="selectdevice" name="selectdevice"
+                            class="custom-input custom-input:focus mx-3 p-2 drop-width"
+                            (change)="onDeviceTypeChange($event)">
+                            <option value="" disabled selected>Select Device Type</option>
                             <option *ngFor="let device of devicedetails.results" [value]="device[0]">{{device[0]}}</option>
                         </select>
+                    </div>
+                    <div>
+                        <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Device
+                            Location</label>
+                        <input type="text" id="location" disabled class="location-value text-black p-2" [value]="deviceLocation" required>
+                    </div>
                 </div>
                 <button (click)="openDeviceMap()" type="button" class="btn btn-primary mb-4">Add Device
                     Location</button>
@@ -66,10 +75,11 @@
         <div *ngIf="openMap" class=" mb-2 map-container bg-white p-4">
             <div class="d-flex gap-2">
                 <input type="text" class="mb-2" placeholder="Enter City Name" [(ngModel)]="city">
-                <button type="button" class="btn btn-primary"  (click)="searchByCity()">Search</button>
+                <button type="button" class="btn btn-primary" (click)="searchByCity()">Search</button>
             </div>
             <!-- <div id="map" style="height: 400px; width: 100%;"></div> -->
-            <google-map height="400px" width="650px" [center]="location" [zoom]="zoomin" (mapClick)="onMapClick($event)">
+            <google-map height="400px" width="650px" [center]="location" [zoom]="zoomin"
+                (mapClick)="onMapClick($event)">
                 <map-marker *ngIf="marklocation" [position]="marklocation"></map-marker>
             </google-map>
         </div>

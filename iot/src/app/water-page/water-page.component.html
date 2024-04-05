@@ -135,6 +135,7 @@
         </a>
         <ul class='dropdown-menu custom-dropdown-menu' aria-labelledby='navbarDropdown'
           (click)='onDropdownClick($event)'>
+          <ng-container *ngIf="devicesNamesList && devicesNamesList.length > 0; else noDevicesMessage">
           <li *ngFor='let device of devicesNamesList'>
             <div class='device-flex'>
               <div class='name-styles'>
@@ -152,6 +153,10 @@
               </div>
             </div>
           </li>
+        </ng-container>
+        <ng-template #noDevicesMessage>
+          <p class="text-center">No devices available.</p>
+        </ng-template>
         </ul>
       </li>
 
@@ -580,11 +585,13 @@
               </div>
             </div>
             <div class="each-item-weather">
-              
-                <h1 class="name-heading">Account City</h1>
-                <h1 class="heading-live-weather pondcity">{{ pondCity }} </h1>
-              
-              
+              <div>
+                <h1 class="name-heading">Account</h1>
+                <h1 class="heading-live-weather">{{ pondCity }}</h1>
+              </div>
+              <div class="bg-icon-image">
+                <img src="../assets/img/location.png" class="image-icon" />
+              </div>
             </div>
           </div>
         </div>

@@ -124,7 +124,9 @@ body{
     outline: none; 
     border-width: 1px; 
 }
-
+.location-value{
+  background-color:  #D9D9D9; 
+}
 .drop-width{
     width: 200px;
 }

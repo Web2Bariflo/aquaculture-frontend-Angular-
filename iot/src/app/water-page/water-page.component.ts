@@ -68,14 +68,14 @@ export class WaterPageComponent implements OnInit {
   graphSwitch: string[] = [];
   weatherPlace: string = 'Bhubaneswar';
   wData: any;
-  lat:any;
-  lon:any;
-  cityLat:any;
-  cityLon:any;
+  lat: any;
+  lon: any;
+  cityLat: any;
+  cityLon: any;
   openCalender = false;
   constructor(private mqttServiceWrapper: MqttServiceWrapper, private el: ElementRef, private renderer: Renderer2,
     private mqttDataService: MqttDataService, public dialog: MatDialog, private sharedDataService: SharedDataService,
-    private router: Router, private auth: AuthenticationService, private dataSharingService: DataSharingService, private readonly weatherService: LiveweatherService, private themeService: ThemeService, private accountClickedMessage :AuthenticationService, private fetchAccountWiseWeather:LiveweatherService,private onAllDeviceslist:AuthenticationService, private geocodingService:LiveweatherService) { }
+    private router: Router, private auth: AuthenticationService, private dataSharingService: DataSharingService, private readonly weatherService: LiveweatherService, private themeService: ThemeService, private fetchAccountWiseWeather: LiveweatherService, private onAllDeviceslist: AuthenticationService, private geocodingService: LiveweatherService) { }
 
 
   // Define an array of tabs in your component
@@ -97,10 +97,14 @@ export class WaterPageComponent implements OnInit {
   chartParamName: any[] = []
   labelName: { [key: string]: string } = {};
   sensorDataForChild: any[] = [];
-  toggleSensorName:boolean= false;
-  topMenu:boolean =false
-  accountID:any;
-  pondCity:any
+  toggleSensorName: boolean = false;
+  topMenu: boolean = false
+  accountID: any;
+  pondCity: any;
+  pondData: any;
+  // devicesNamesList: any[]; // assuming this array is initialized with device information
+  devicesStatus: { [id: string]: boolean } = {}; // Object to hold device status
+
   // @ViewChild('chartContainer') chartContainer!: ElementRef;
   // ngAfterViewInit() {
   //   // Access the ElementRef directly or any other logic in the parent component
@@ -116,10 +120,12 @@ export class WaterPageComponent implements OnInit {
   }
 
   accountsContainer() {
+
     this.accountdropup = !this.accountdropup;
     this.accountShow = !this.accountShow;
 
-    
+
+
   }
 
   toggleContainer(index: number) {
@@ -135,10 +141,11 @@ export class WaterPageComponent implements OnInit {
   accountsData: any;
   totalPondView: any;
   mobileNumber: any;
-  devicesStatus: { [deviceId: string]: boolean } = {};
+  // devicesStatus: { [deviceId: string]: boolean } = {};
   devicesNamesList: any;
   isToggleOn: boolean = false;
-  userAccountNumber:any;
+  userAccountNumber: any;
+  deviceList: any
   // chartContainerVisible: boolean = true;
 
   // ngOnChanges(changes: SimpleChanges): void {
@@ -183,10 +190,10 @@ export class WaterPageComponent implements OnInit {
   // }
   async ngOnInit() {
     // console.log(this.sensorDataIn);
- 
+
     // this.subscribeToTopic();
     // console.log(this.childData);
-    
+
 
 
 
@@ -199,7 +206,7 @@ export class WaterPageComponent implements OnInit {
     }
     // console.log(this.graphHeadings);
     // console.log(this.categories);
-    
+
 
 
     // Set initial value for previousGraphHeadings
@@ -284,11 +291,11 @@ export class WaterPageComponent implements OnInit {
 
 
 
-    this.auth.onLoginGeneralDashboard(savedmob).subscribe((response) => {
-      // console.log(response);
-    }, error => {
-      console.log(error)
-    })
+    // this.auth.onLoginGeneralDashboard(savedmob).subscribe((response) => {
+    //   // console.log(response);
+    // }, error => {
+    //   console.log(error)
+    // })
 
     // try {
     //   const response = await this.auth.onLoginGeneralDashboard(1487826781359).toPromise();
@@ -356,110 +363,158 @@ export class WaterPageComponent implements OnInit {
 
     // console.log("called..............");
     // this.subscribeToTopic();
-    
+
+
+    // console.log(this.devicesStatus);
+    // this.devicesNamesList.forEach((device:any) => {
+    //   const storedStatus = localStorage.getItem(device[1]);
+    //   console.log(storedStatus);
+    //   if (storedStatus !== null) {
+    //     this.devicesStatus[device[1]] = JSON.parse(storedStatus);
+
+    //   } else {
+    //     // If no status is found in localStorage, default to false (off)
+    //     this.devicesStatus[device[1]] = false;
+    //   }
+    // });
 
 
 
   }
   // click on perticular accouont
   async getAccountData(id: any) {
-    console.log("On click get account info",id);
+    console.log("On click get account info", id);
     // this.weatherPlace = place;
     // console.log("weather Place",this.weatherPlace);
-  if(id){
-    this.userAccountNumber = id;
-    this.accountClickedMessage.accountClickedMessage(id).subscribe(
-      (data)=>{
-        // console.log(data);
-        // this.lat = data.message[2]
-        // this.lon = data.message[3]
-      // console.log("latitude",this.lat);
-      const lat = data.message[2]
-      const lon = data.message[3]
- 
-      this.loadAccountWeather(lat,lon)
-      const addressArray = data.message[4].split(', ');
-      this.pondCity = addressArray[3]
-      // this.geocodingService.getCityName(lat, lon).subscribe(data => {
-      //   if (data && data.results && data.results.length > 0) {
-      //     const cityName = data.results[0].formatted_address;
-      //     console.log("CItyname......",cityName);
+    if (id) {
+      this.userAccountNumber = id;
+      this.auth.accountClickedMessage(id).subscribe(
+        (data) => {
+          console.log("account data..............", data);
+        
+          // console.log(data);
+          const lat = data.message[2]
+          const lon = data.message[3]
+          this.pondCity = data.message[0]
+          // console.log(lat,lon);
           
-      //   } else {
-      //     const cityName = 'City not found';
-      //   }
-      // });
-    }
-      
+          this.pondData = data;
+          this.initMap();
+
+          this.loadAccountWeather(lat, lon)
+          // const addressArray = data.message[4].split(', ');
+          
+          // this.initMap();
+
+          // this.auth.accountClickedMessage(id).subscribe((res) => {
+          //   console.log(res);
+            
+
+          // })
+        }
+
 
       )
-  }
-  else{
-    this.loadWeather()
-  }
-  if(id){
-    this.onAllDeviceslist.onAllDeviceslist(id).subscribe((res)=>{
-      console.log("Account device details res",res);
-      this.devicesNamesList = res;
-      
-    },
-    (error) => {
-      console.log(error)
-    })
-  }
-  try {
-    const response = await this.auth.onLoginGeneralDashboard(id).toPromise();
-    // console.log("auth Data", this.auth);
-    console.log("Data Response", response);
-
-
-
-    if (response) {
-      this.sensorDataForChild = response as any[];
-      // console.log(this.sensorDataForChild);
-
-      const sensorsData = response;
-      const allValues = Object.values(sensorsData);
-      const flattened = allValues.reduce((acc, arr) => acc.concat(arr), []);
-      const uniqueElements = Array.from(new Set(flattened));
-      this.deviceIdList = Object.keys(sensorsData);
-      // console.log('list', this.deviceIdList);
-      this.sensorHeadings = this.transformObject(sensorsData);
-      this.graphHeadings = uniqueElements;
-      Object.keys(response).forEach(deviceId => {
-        const lastThreeDigits = deviceId.slice(-3);
-        this.labelName[deviceId] = `device ${lastThreeDigits}`;
-
-      });
-
-
-    } else {
-      console.error("Response is undefined");
+    }
+    else {
+      this.loadWeather()
     }
 
-  } catch (error) {
-    console.log(error)
-  }
+    if (id) {
+      this.onAllDeviceslist.onAllDeviceslist(id).subscribe((res) => {
+        console.log("Account device details res", res);
+        this.devicesNamesList = res;
+        this.deviceList = res;
+        // Store the data in local storage
+        localStorage.setItem('device', JSON.stringify(res));
+        console.log(this.deviceAllDetails);
+        this.devicesNamesList.forEach((device: any) => {
+          const storedStatus = localStorage.getItem(device[1]);
+          console.log(storedStatus);
+          if (storedStatus !== null) {
+            this.devicesStatus[device[1]] = JSON.parse(storedStatus);
+            console.log(this.devicesStatus[device[1]]);
+
+
+          } else {
+            // If no status is found in localStorage, default to false (off)
+            this.devicesStatus[device[1]] = false;
+          }
+        });
+
+        this.initMap()
+
+      },
+        (error) => {
+          console.log(error)
+        })
+    }
+    try {
+      const response = await this.auth.onLoginGeneralDashboard(id).toPromise();
+      // console.log("auth Data", this.auth);
+      console.log("Data Response", response);
+
+
+
+      if (response) {
+        this.sensorDataForChild = response as any[];
+        // console.log(this.sensorDataForChild);
+
+        const sensorsData = response;
+        const allValues = Object.values(sensorsData);
+        const flattened = allValues.reduce((acc, arr) => acc.concat(arr), []);
+        const uniqueElements = Array.from(new Set(flattened));
+        this.deviceIdList = Object.keys(sensorsData);
+        // console.log('list', this.deviceIdList);
+        this.sensorHeadings = this.transformObject(sensorsData);
+        this.graphHeadings = uniqueElements;
+        Object.keys(response).forEach(deviceId => {
+          const lastThreeDigits = deviceId.slice(-3);
+          this.labelName[deviceId] = `device ${lastThreeDigits}`;
+
+        });
+
+
+      } else {
+        console.error("Response is undefined");
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+    this.devicesNamesList.forEach((device: any) => {
+      const storedStatus = localStorage.getItem(device[1]);
+      console.log(storedStatus);
+      if (storedStatus !== null) {
+        this.devicesStatus[device[1]] = JSON.parse(storedStatus);
+        console.log(this.devicesStatus[device[1]]);
+
+
+      } else {
+        // If no status is found in localStorage, default to false (off)
+        this.devicesStatus[device[1]] = false;
+      }
+    });
 
   }
 
   // get city name from lat longitude
-  
 
 
 
-  loadAccountWeather(lat:any,lon:any){
+
+  loadAccountWeather(lat: any, lon: any) {
     // console.log("latitude",this.lat);
-    
-    this.fetchAccountWiseWeather.fetchAccountWiseWeather(lat,lon).subscribe(
-      (data)=>{
+
+    this.fetchAccountWiseWeather.fetchAccountWiseWeather(lat, lon).subscribe(
+      (data) => {
         console.log(data);
         this.wData = data
-        
+
       }
     );
-    
-    
+
+
   }
   loadWeather() {
     this.weatherService.fetchData(this.weatherPlace).subscribe(
@@ -500,15 +555,15 @@ export class WaterPageComponent implements OnInit {
 
 
   onDevices() {
-    if(this.accountID){
-      this.onAllDeviceslist.onAllDeviceslist(this.accountID).subscribe((res)=>{
+    if (this.accountID) {
+      this.onAllDeviceslist.onAllDeviceslist(this.accountID).subscribe((res) => {
         console.log(res);
         this.devicesNamesList = res;
-        
+
       },
-      (error) => {
-        console.log(error)
-      })
+        (error) => {
+          console.log(error)
+        })
     }
     // else{
 
@@ -521,23 +576,24 @@ export class WaterPageComponent implements OnInit {
     //     })
     // }
   }
-  showTopNav(event:Event): void{
+  showTopNav(event: Event): void {
     this.topMenu = !this.topMenu
     console.log(this.topMenu);
-    
+
     // event.stopPropagation();
     const elements = document.querySelectorAll('.top-navbar-menu');
     const body = document.body;
     elements.forEach((element) => {
-    if (this.topMenu) {
-      this.renderer.addClass(element, 'showTopMenu');
-      
-    } else {
-      this.renderer.removeClass(element, 'showTopMenu');
-      
-    }})
+      if (this.topMenu) {
+        this.renderer.addClass(element, 'showTopMenu');
+
+      } else {
+        this.renderer.removeClass(element, 'showTopMenu');
+
+      }
+    })
   }
-  togglesensorName(){
+  togglesensorName() {
     this.toggleSensorName = !this.toggleSensorName
     const element = document.querySelector('.sensorSwitch')
     // console.log(element);
@@ -553,7 +609,7 @@ export class WaterPageComponent implements OnInit {
     // Prevent the click event from propagating to the document level
     event.stopPropagation();
   }
-  showSwitch(e:Event):void{
+  showSwitch(e: Event): void {
     e.stopPropagation();
   }
 
@@ -565,87 +621,158 @@ export class WaterPageComponent implements OnInit {
 
 
     const isChecked = (event.target as HTMLInputElement).checked;
+
+
     this.devicesStatus[device[1]] = isChecked;
 
-    this.statusSend = {
-      display_id: parseInt(device[1]),
-      virtual_pin: device[2],
-      status: isChecked,
-    }
-    // console.log("device status send",this.statusSend);
-    const jsonData = JSON.stringify(this.statusSend)
+    localStorage.setItem(device[1], JSON.stringify(isChecked));
+    this.publishToDevice(device, isChecked);
+    this.initMap();
 
-    this.mqttServiceWrapper.publish(`${parseInt(device[1])}`, jsonData, { qos: 0 });
+
+    // this.statusSend = {
+    //   display_id: parseInt(device[1]),
+    //   virtual_pin: device[3],
+    //   status: isChecked,
+    // }
+
+    // // console.log("device status send",this.statusSend);
+    // const jsonData = JSON.stringify(this.statusSend)
+
+    // this.mqttServiceWrapper.publish(`${parseInt(device[1])}`, jsonData, { qos: 0 });
     // console.log('Published message:', jsonData);
 
     // console.log(this.statusSend);
 
     // Your toggle change logic here
   }
+  publishToDevice(device: any, status: boolean): void {
+    const statusSend = {
+      display_id: parseInt(device[1]),
+      virtual_pin: device[3],
+      status: status,
+    };
+
+    const jsonData = JSON.stringify(statusSend);
+    this.mqttServiceWrapper.publish(`${parseInt(device[1])}`, jsonData, { qos: 0 });
+  }
+
   initMap() {
 
     this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, {
-      center: { lat: 21.7679, lng: 78.8718 },
-      zoom: 3
+      center: { lat: 20.658664800983, lng: 84.33196326384271 },
+      zoom: 6
     });
     // console.log("map data",this.map);
+    // console.log("devcename list", this.pondData.message);
+    // Add markers for device locations
+    this.devicesNamesList.forEach((item: any) => {
+      // console.log(item);
+      
+      const isChecked = this.devicesStatus[item[1]]; // Get the toggle state
+
+      let markerColor = isChecked ? 'green' : 'red'; // Default marker color
 
 
-    // Add markers
-    this.totalPondView.forEach((marker: any) => {
-      const markerPosition = new google.maps.LatLng(marker.lat, marker.lng);
+      const markerPosition = new google.maps.LatLng(item[2][0], item[2][1]);
       const mapMarker = new google.maps.Marker({
         position: markerPosition,
-        label: marker.label,
+        // label: item[0], // Use the label from the data
+        label: '', // Use the label from the data
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: markerColor, // Set marker color
+          fillOpacity: 1,
+          strokeWeight: 0,
+          scale: 8 // Adjust the size as needed
+        },
         map: this.map
       });
-      // console.log('output', mapMarker)
 
       // Add info window with custom content
-      const infoWindow = new google.maps.InfoWindow();
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<div>
+                <p>Device Name :${item[0]}</p>
+                <p>Latitude: ${item[2][1]}</p>
+                <p>Longitude: ${item[2][0]}</p>
+             </div>`
+      });
 
-      // Use Geocoder to get city based on coordinates
-      const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ location: markerPosition }, (results: any, status) => {
-        if (status === 'OK') {
-          const city = results[0]?.address_components?.find((component: any) =>
-            component.types.includes('locality')
-          )?.long_name;
-          // console.log(city, 'city')
-          this.weatherPlace = city;
-          const Areaaddress = results[0]?.formatted_address
-          // console.log(Areaaddress, 'area')
-          const infoContent = `
-            <div>
-            <p>${marker.labelfullname}</p>
-              <p style="width:200px";>Area: ${Areaaddress || 'N/A'}</p>
-              <p>City: ${marker.city}</p>
-              <p>Latitude: ${marker.lat}</p>
-              <p>Longitude: ${marker.lng}</p>
-            </div>
-          `;
+      // Show infoWindow on marker click
+      mapMarker.addListener('click', () => {
+        infoWindow.open(this.map, mapMarker);
+      });
 
-          infoWindow.setContent(infoContent);
+      // Show infoWindow on marker hover
+      mapMarker.addListener('mouseover', () => {
+        infoWindow.open(this.map, mapMarker);
+      });
 
-          // Show infoWindow on marker click
-          mapMarker.addListener('click', () => {
-            infoWindow.open(this.map, mapMarker);
-          });
-
-          // Show infoWindow on marker hover
-          mapMarker.addListener('mouseover', () => {
-            infoWindow.open(this.map, mapMarker);
-          });
-
-          // Close infoWindow on mouseout
-          mapMarker.addListener('mouseout', () => {
-            infoWindow.close();
-          });
-        } else {
-          console.error('Geocode failed due to: ' + status);
-        }
+      // Close infoWindow on mouseout
+      mapMarker.addListener('mouseout', () => {
+        infoWindow.close();
       });
     });
+    console.log(this.pondData);
+
+    const pondName = this.pondData.message[0]; // Extracted from message array
+    const lat = this.pondData.message[2]; // Extracted from accounts array
+    const lon = this.pondData.message[3];
+
+    // Add markers
+    // this.pondData.forEach((marker: any) => {
+    const markerPosition = new google.maps.LatLng(lat, lon);
+    const mapMarker = new google.maps.Marker({
+      position: markerPosition,
+      label: pondName, // Use city name as the label for the marker
+      map: this.map
+    });
+
+    // Add info window with custom content
+    const infoWindow = new google.maps.InfoWindow();
+
+    // Use Geocoder to get city based on coordinates
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ location: markerPosition }, (results: any, status) => {
+      if (status === 'OK') {
+        const city = results[0]?.address_components?.find((component: any) =>
+          component.types.includes('locality')
+        )?.long_name;
+        const Areaaddress = results[0]?.formatted_address;
+
+        const infoContent = `
+            <div>
+                <p>City: ${city || 'N/A'}</p>
+                <p>Latitude: ${lat}</p>
+                <p>Longitude: ${lon}</p>
+            </div>
+        `;
+
+        infoWindow.setContent(infoContent);
+
+        // Show infoWindow on marker click
+        mapMarker.addListener('click', () => {
+          infoWindow.open(this.map, mapMarker);
+        });
+
+        // Show infoWindow on marker hover
+        mapMarker.addListener('mouseover', () => {
+          infoWindow.open(this.map, mapMarker);
+        });
+
+        // Close infoWindow on mouseout
+        mapMarker.addListener('mouseout', () => {
+          infoWindow.close();
+        });
+         // Zoom to the marker
+      this.map.setZoom(17); // Set zoom level as needed
+      this.map.setCenter(markerPosition); // Cent
+      } else {
+        console.error('Geocode failed due to: ' + status);
+      }
+    });
+    // });
+
   }
 
   transformObject(input: any): { [key: string]: string[] } {
@@ -696,7 +823,7 @@ export class WaterPageComponent implements OnInit {
   // subscribeToTopic() {
   //   this.deviceIdList.forEach((id: any) => {
   //     console.log(id);
-      
+
 
   //     const subscribeTopic = id + '/data'
   //      this.mqttServiceWrapper.observe(`${subscribeTopic}`, (message) => {
@@ -710,7 +837,7 @@ export class WaterPageComponent implements OnInit {
   //       this.data = [...this.data,parseFloat(sensorDataIn.paramValue).toFixed(2)]
   //       this.sharedDataService.updateData(this.data);
   //       console.log(this.categories,this.data);
-        
+
   //     });
 
   //   })
@@ -1135,6 +1262,7 @@ export class WaterPageComponent implements OnInit {
 
   onLogout(): void {
     window.location.href = 'http://aqua.bariflorobotics.com/login'
+    localStorage.removeItem('logMob');
 
     localStorage.removeItem('token');
   }

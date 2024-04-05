@@ -27,7 +27,7 @@ export class RegisterAddDeviceComponent implements OnInit{
   zoomin=4;
   marklocation:any=false;
   locationlive: any;
-  deviceLocation: any;
+  deviceLocation: any = 0;
   // deviceName:any;
   // selectdevice:any;
 
@@ -119,7 +119,7 @@ searchByCity() {
         lng: results[0].geometry.location.lng()
       };
       this.location = location;
-      this.zoomin = 10;
+      this.zoomin = 15;
       this.marklocation = location; // Mark the searched location
     } else {
       console.error('Geocode was not successful for the following reason:', status);
@@ -136,6 +136,9 @@ onMapClick(event: google.maps.MapMouseEvent) {
     this.deviceLocation = clickedLocation;
      
     console.log('Clicked Location:', clickedLocation);
+    this.openMap = !this.openMap
+
+   
   } else {
     console.error('LatLng is null.');
   }
