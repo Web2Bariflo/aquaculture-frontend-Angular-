@@ -198,12 +198,12 @@ export class WaterPageComponent implements OnInit {
 
 
     this.loadWeather()
-    const storedGraphSwitch = localStorage.getItem('graphHeadings');
+    // const storedGraphSwitch = localStorage.getItem('graphHeadings');
 
 
-    if (storedGraphSwitch) {
-      this.graphHeadings = JSON.parse(storedGraphSwitch);
-    }
+    // if (storedGraphSwitch) {
+    //   this.graphHeadings = JSON.parse(storedGraphSwitch);
+    // }
     // console.log(this.graphHeadings);
     // console.log(this.categories);
 
@@ -351,11 +351,13 @@ export class WaterPageComponent implements OnInit {
 
 
 
+    // console.log(this.deviceIdList);
     this.sensorDataIn['dateTime'] = []
     // console.log("called..............");
-    this.subscribeToTopic();
+    // this.subscribeToTopic();
 
-    this.initializeChart();
+
+    // this.initializeChart();
     // console.log("called..............");
 
     // this.handleResponsiveLayout();
@@ -383,32 +385,34 @@ export class WaterPageComponent implements OnInit {
   }
   // click on perticular accouont
   async getAccountData(id: any) {
-    console.log("On click get account info", id);
+    // console.log("On click get account info", id);
     // this.weatherPlace = place;
     // console.log("weather Place",this.weatherPlace);
     if (id) {
       this.userAccountNumber = id;
       this.auth.accountClickedMessage(id).subscribe(
         (data) => {
-          console.log("account data..............", data);
-        
+          // console.log("account data..............", data);
+
           // console.log(data);
           const lat = data.message[2]
           const lon = data.message[3]
           this.pondCity = data.message[0]
           // console.log(lat,lon);
-          
+
           this.pondData = data;
           this.initMap();
-
-          this.loadAccountWeather(lat, lon)
-          // const addressArray = data.message[4].split(', ');
+          // console.log(this.deviceIdList);
           
+          this.loadAccountWeather(lat, lon)
+
+          // const addressArray = data.message[4].split(', ');
+
           // this.initMap();
 
           // this.auth.accountClickedMessage(id).subscribe((res) => {
           //   console.log(res);
-            
+
 
           // })
         }
@@ -420,20 +424,28 @@ export class WaterPageComponent implements OnInit {
       this.loadWeather()
     }
 
+
+    const storedGraphSwitch = localStorage.getItem('graphHeadings');
+
+
+    if (storedGraphSwitch) {
+      this.graphHeadings = JSON.parse(storedGraphSwitch);
+    }
+
     if (id) {
       this.onAllDeviceslist.onAllDeviceslist(id).subscribe((res) => {
-        console.log("Account device details res", res);
+        // console.log("Account device details res", res);
         this.devicesNamesList = res;
         this.deviceList = res;
         // Store the data in local storage
         localStorage.setItem('device', JSON.stringify(res));
-        console.log(this.deviceAllDetails);
+        // console.log(this.deviceAllDetails);
         this.devicesNamesList.forEach((device: any) => {
           const storedStatus = localStorage.getItem(device[1]);
-          console.log(storedStatus);
+          // console.log(storedStatus);
           if (storedStatus !== null) {
             this.devicesStatus[device[1]] = JSON.parse(storedStatus);
-            console.log(this.devicesStatus[device[1]]);
+            // console.log(this.devicesStatus[device[1]]);
 
 
           } else {
@@ -452,7 +464,7 @@ export class WaterPageComponent implements OnInit {
     try {
       const response = await this.auth.onLoginGeneralDashboard(id).toPromise();
       // console.log("auth Data", this.auth);
-      console.log("Data Response", response);
+      // console.log("Data Response", response);
 
 
 
@@ -466,6 +478,9 @@ export class WaterPageComponent implements OnInit {
         const uniqueElements = Array.from(new Set(flattened));
         this.deviceIdList = Object.keys(sensorsData);
         // console.log('list', this.deviceIdList);
+        var jsonData = JSON.stringify(this.deviceIdList);
+        // Store data in local storage
+        localStorage.setItem('deviceIdList', jsonData);
         this.sensorHeadings = this.transformObject(sensorsData);
         this.graphHeadings = uniqueElements;
         Object.keys(response).forEach(deviceId => {
@@ -478,16 +493,18 @@ export class WaterPageComponent implements OnInit {
       } else {
         console.error("Response is undefined");
       }
+      this.subscribeToTopic();
+
 
     } catch (error) {
       console.log(error)
     }
     this.devicesNamesList.forEach((device: any) => {
       const storedStatus = localStorage.getItem(device[1]);
-      console.log(storedStatus);
+      // console.log(storedStatus);
       if (storedStatus !== null) {
         this.devicesStatus[device[1]] = JSON.parse(storedStatus);
-        console.log(this.devicesStatus[device[1]]);
+        // console.log(this.devicesStatus[device[1]]);
 
 
       } else {
@@ -495,6 +512,8 @@ export class WaterPageComponent implements OnInit {
         this.devicesStatus[device[1]] = false;
       }
     });
+    // console.log(this.deviceIdList);
+
 
   }
 
@@ -508,7 +527,7 @@ export class WaterPageComponent implements OnInit {
 
     this.fetchAccountWiseWeather.fetchAccountWiseWeather(lat, lon).subscribe(
       (data) => {
-        console.log(data);
+        // console.log(data);
         this.wData = data
 
       }
@@ -557,7 +576,7 @@ export class WaterPageComponent implements OnInit {
   onDevices() {
     if (this.accountID) {
       this.onAllDeviceslist.onAllDeviceslist(this.accountID).subscribe((res) => {
-        console.log(res);
+        // console.log(res);
         this.devicesNamesList = res;
 
       },
@@ -578,7 +597,7 @@ export class WaterPageComponent implements OnInit {
   }
   showTopNav(event: Event): void {
     this.topMenu = !this.topMenu
-    console.log(this.topMenu);
+    // console.log(this.topMenu);
 
     // event.stopPropagation();
     const elements = document.querySelectorAll('.top-navbar-menu');
@@ -668,7 +687,7 @@ export class WaterPageComponent implements OnInit {
     // Add markers for device locations
     this.devicesNamesList.forEach((item: any) => {
       // console.log(item);
-      
+
       const isChecked = this.devicesStatus[item[1]]; // Get the toggle state
 
       let markerColor = isChecked ? 'green' : 'red'; // Default marker color
@@ -713,7 +732,7 @@ export class WaterPageComponent implements OnInit {
         infoWindow.close();
       });
     });
-    console.log(this.pondData);
+    // console.log(this.pondData);
 
     const pondName = this.pondData.message[0]; // Extracted from message array
     const lat = this.pondData.message[2]; // Extracted from accounts array
@@ -764,9 +783,9 @@ export class WaterPageComponent implements OnInit {
         mapMarker.addListener('mouseout', () => {
           infoWindow.close();
         });
-         // Zoom to the marker
-      this.map.setZoom(17); // Set zoom level as needed
-      this.map.setCenter(markerPosition); // Cent
+        // Zoom to the marker
+        this.map.setZoom(17); // Set zoom level as needed
+        this.map.setCenter(markerPosition); // Cent
       } else {
         console.error('Geocode failed due to: ' + status);
       }
@@ -774,6 +793,7 @@ export class WaterPageComponent implements OnInit {
     // });
 
   }
+
 
   transformObject(input: any): { [key: string]: string[] } {
     const output: { [key: string]: string[] } = {};
@@ -801,12 +821,17 @@ export class WaterPageComponent implements OnInit {
 
 
   subscribeToTopic() {
+    // Retrieve data from local storage
+    // let storedData:any = localStorage.getItem('deviceIdList');
+    // var deviceIdList = JSON.parse(storedData);
+    // console.log(deviceIdList);
+
     this.deviceIdList.forEach((id: any) => {
       // console.log(id);
       const subscribeTopic = id + '/data'
       this.subscription = this.mqttServiceWrapper.observe(`${subscribeTopic}`, (message) => {
         this.receivedMessage = message.payload.toString();
-        console.log('Received message:', this.receivedMessage, message);
+        // console.log('Received message:', this.receivedMessage, message);
         const sensorDataIn = JSON.parse(message.payload.toString());
         this.categories = [...this.categories, sensorDataIn.dataPoint.substring(11, 16)];
 
@@ -814,7 +839,7 @@ export class WaterPageComponent implements OnInit {
         this.data = [...this.data, parseFloat(sensorDataIn.paramValue).toFixed(2)]
         this.sharedDataService.updateData(this.data);
         this.handlesensorDataIn(sensorDataIn);
-        console.log("categories...........................", this.categories);
+        // console.log("categories...........................", this.categories, this.deviceIdList);
 
       });
     })
@@ -1187,7 +1212,7 @@ export class WaterPageComponent implements OnInit {
   }
 
   private createDatasets(params: any[]): any[] {
-    console.log(params, "paramsData");
+    // console.log(params, "paramsData");
     // console.log(this.sensorDataIn);
 
     // if(this.graphSwitch){
@@ -1332,13 +1357,13 @@ export class WaterPageComponent implements OnInit {
   unsubscribeFromTopic() {
     if (this.subscription) {
       this.subscription.unsubscribe();
-      console.log('Unsubscribed from topic.');
+      // console.log('Unsubscribed from topic.');
     }
   }
 
   disconnect() {
     this.mqttServiceWrapper.disconnect();
-    console.log('Disconnected from MQTT broker.');
+    // console.log('Disconnected from MQTT broker.');
   }
 
   publishData() {

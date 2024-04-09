@@ -196,6 +196,7 @@ export class ChartComponents {
             };
             this.chart.data.datasets.push(dataset);
           }
+          this.chart.update()
           if (this.chart.data && this.chart.data.labels) {
             // Update labels
             if (!this.chart.data.labels.includes(dataPoint)) {
@@ -210,10 +211,11 @@ export class ChartComponents {
             y: paramValue
           });
           // // Limit data length to 20
-          // if (dataset.data.length >= 20) {
-          //   dataset.data.shift(); // Remove oldest data point
-          // }
-          // Update the chart
+           if (this.chart.data.labels && dataset.data.length > 10) {
+            dataset.data.shift(); // Remove oldest data point
+            this.chart.data.labels.splice(0);
+          }
+          
           this.chart.update();
         }
       }

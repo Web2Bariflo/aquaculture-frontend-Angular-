@@ -111,11 +111,15 @@ height: 20px;
 }
 
 .selected-tab {
+  width: 100%;
 background-color: white;
 border-radius: 30px 30px 30px 30px;
 min-width: 100%;
 
 
+}
+.selected-tab a{
+  width: 100%;
 }
 
 .table-head{
@@ -399,6 +403,12 @@ text-align: center;
     border-radius: 40px;
     text-align: center;
     }
+    .selected-tab .users-check{
+      width: 100%;
+      display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    }
     .icon-sizing{
       max-width: 16px;
     max-height: 16px;
@@ -407,10 +417,16 @@ text-align: center;
     
     .icon-text{
       font-size: 10px;
-      margin-left:2px;
+      /* margin-left:2px; */
       margin-top: 2px;
     }
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+}
 
+  alig
     
 .no-users{
   max-width: 140px;
